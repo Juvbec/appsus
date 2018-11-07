@@ -13,7 +13,7 @@ export default {
                     <span>to:</span> 
                     <input type="text" v-model="email.recipient">
                 </label>
-                <label v-if="recipient">
+                <label v-if="email.recipient">
                     <span>Cc:</span> 
                     <input type="text" v-model="email.cc">
                 </label>
@@ -29,9 +29,11 @@ export default {
         return {
             email: {
                 recipient: null,
-                subject: null,
                 cc: null,
-                message: null
+                sender: 'Me',
+                subject: null,
+                message: null,
+                isMine: true
             }
         }
     },

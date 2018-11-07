@@ -35,15 +35,17 @@ button:focus {
     outline: 0;
 }
 
-header, footer {
+header {
     height: 100px;
     background-color: var(--main);
     text-align: center;
-}
-
-header {
     display: flex;
     justify-content: space-around;
+}
+footer {
+ height: 50px;
+ background-color: var(--main);
+    text-align: center;
 }
 
 #app {

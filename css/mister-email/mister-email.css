@@ -23,17 +23,6 @@
   }
 
 
-  .email-prev {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 30px;
-    background-color: #f3f3f3;
-    border: 1px solid #666;
-  }
-  .email-prev:hover {
-    background-color: lemonchiffon;
-  }
 
 
 
@@ -56,6 +45,34 @@
 .compose-btn:hover {
   background-color: red;
   color: white;
+}
+
+/* email preview */
+.email-list {
+
+}
+
+.email-prev {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  background-color: #f3f3f3;
+  border: 1px solid #666;
+}
+.email-prev:hover {
+  background-color: lemonchiffon;
+}
+.email-btn.fa-trash {
+  /* position: absolute; */
+  /* right: 0;
+  bottom: 0; */
+  color: red;
+}
+.email-btn.fa-trash:hover{
+  color: black;
+  cursor: pointer;
 }
 
 
