@@ -3,6 +3,7 @@ import noteService from '../../services/miss-keep/notes-service.js';
 
 
 export default {
+    props: ['currNote'],
     template: `
         <section class="new-note-container">
             <div class="screen-blur" @click="discardNote">
@@ -32,12 +33,15 @@ export default {
             }
         }
     },
+    created() {
+        if (this.currNote) this.note = this.currNote;
+    },
     mounted() {
         this.$refs.content.focus();
     },
     methods: {
         addNote() {
-            this.note.at = Date.now();
+            if (this.note.at === '') this.note.at = Date.now();
             console.log(this.note)
             noteService.addNote(this.note);
             this.$emit('closeModal');

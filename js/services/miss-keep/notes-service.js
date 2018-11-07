@@ -34,7 +34,6 @@ function getById(noteId) {
 
 function addNote(newNote) {
     saveNote(newNote);
-    query();
 }
 
 function saveNote(note) {

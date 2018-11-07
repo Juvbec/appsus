@@ -1,0 +1,22 @@
+.note-preview-content {
+    padding: 5px;
+    background-color: rgb(248, 210, 140);
+}
+
+.note-preview-title {
+    padding: 5px;
+    background-color: rgb(241, 189, 92);
+    font-weight: bold;
+}
+
+.note-preview-container {
+    height: 150px;
+    width: 150px;
+    transition: .3s;
+    margin: 0 10px;
+}
+
+.note-preview-container:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}

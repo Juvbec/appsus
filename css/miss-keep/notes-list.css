@@ -1,5 +1,8 @@
 .notes-list-container {
     position: relative;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .new-note-btn {
@@ -17,6 +20,7 @@
     right: 0;
     margin: 10px;
     border: 2px solid blue;
+    z-index: 1;
 }
 
 .new-note-btn:hover {
