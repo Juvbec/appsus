@@ -37,8 +37,15 @@ export default {
             }
         }
     },
+    computed: {
+        ccs() {
+            if (!this.email.cc) return null;
+            return this.email.cc.split(',');
+        }
+    },
     methods: {
         sendEmail() {
+            this.email.cc = this.ccs;
             emailService.addEmail(this.email)
             this.goBack()
         },
