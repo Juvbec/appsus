@@ -22,15 +22,11 @@ export default {
                 this.emails = emails;
             });
         },
-        insert() {
-            var i = Math.round(Math.random() * this.emails.length)
-            this.emails.splice(i, 0, id++)
-        },
         remove(email) {
-            var idx = this.emails.findIndex(currEmail=>currEmail.id===email.id)
-            if (idx > -1) {
-                this.emails.splice(idx, 1)
-            }
+            emailService.deleteEmail(email.id)
+            .then(emails=> {
+                this.emails = emails;
+            });
         }
     },
     created() {
