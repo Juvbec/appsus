@@ -19,7 +19,6 @@ export default {
                     </div>
                 </div>
             </div>
-            {{note}}
         </section>
     `,
     data() {
