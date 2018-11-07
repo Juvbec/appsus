@@ -45,6 +45,7 @@ header, footer {
 }
 .page-content {
     flex-grow: 1;
+    background: url('../img/mr-meeseeks.jpg') no-repeat center;
 }
 
 
