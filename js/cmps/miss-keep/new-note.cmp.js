@@ -45,6 +45,7 @@ export default {
             // console.log(this.note)
             noteService.addNote(this.note);
             this.$emit('closeModal');
+            this.$emit('addedNote');
         },
         discardNote() {
             // console.log(this.note.title.trim().length , this.note.content.trim().length)
@@ -65,6 +66,7 @@ export default {
             } else {
                 this.$emit('closeModal');
             }
+            this.$emit('addedNote');
         }
     }
 
