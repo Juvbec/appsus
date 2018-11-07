@@ -1,3 +1,7 @@
+@import './miss-keep/notes-list.css';
+
+
+
 /* ROOT */
 :root {
     --background: #f0f5f9;
@@ -12,6 +16,14 @@ html,body, #app {
 }
 * {
     box-sizing: border-box;
+}
+
+button , a {
+    cursor: pointer;
+}
+
+button:focus {
+    outline: 0;
 }
 
 header, footer {

@@ -1,5 +1,5 @@
-import storageService from './storage.service.js'
-import utilService from './util.service.js'
+import storageService from '../storage.service.js'
+import utilService from '../util.service.js'
 
 
 const STORAGE_KEY = 'missKeepAppKey';
@@ -7,6 +7,7 @@ const STORAGE_KEY = 'missKeepAppKey';
 export default {
     query,
     getById,
+    addNote,
 }
 
 function query(filter = null) {
@@ -28,4 +29,8 @@ function getById(noteId) {
         .then(notes => {
             return notes.find(note => note.id === noteId);
         })
+}
+
+function addNote(newNote) {
+
 }
