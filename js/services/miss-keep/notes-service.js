@@ -8,6 +8,7 @@ export default {
     query,
     getById,
     addNote,
+    saveNote
 }
 
 function query(filter = null) {
@@ -33,6 +34,7 @@ function getById(noteId) {
 
 function addNote(newNote) {
     saveNote(newNote);
+    query();
 }
 
 function saveNote(note) {
