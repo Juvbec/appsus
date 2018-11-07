@@ -58,6 +58,7 @@ footer {
     position: relative;
     flex-grow: 1;
     /* background: url('../img/mr-meeseeks.jpg') no-repeat center; */
+    padding: 10px;
 }
 
 .logo {

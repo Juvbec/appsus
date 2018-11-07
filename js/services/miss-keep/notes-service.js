@@ -35,6 +35,7 @@ function getById(noteId) {
 
 function addNote(newNote) {
     saveNote(newNote);
+    return Promise.resolve();
 }
 
 function saveNote(note) {

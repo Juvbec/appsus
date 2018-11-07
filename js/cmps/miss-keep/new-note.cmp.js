@@ -1,5 +1,5 @@
 import noteService from '../../services/miss-keep/notes-service.js';
-
+import eventBus , {NOTES_CHANGE} from '../../services/event-bus.service.js';
 
 
 export default {
@@ -42,9 +42,10 @@ export default {
         addNote() {
             if (this.note.at === '') this.note.at = Date.now();
             // console.log(this.note)
-            noteService.addNote(this.note);
+            noteService.addNote(this.note).then(res => {
+                eventBus.$emit(NOTES_CHANGE);
+            });
             this.$emit('closeModal');
-            this.$emit('addedNote');
         },
         discardNote() {
             // console.log(this.note.title.trim().length , this.note.content.trim().length)
@@ -59,13 +60,14 @@ export default {
             if (this.note.title.trim().length || this.note.content.trim().length){
                 if (!confirm('Delete note?')) return;
                 else {
-                    noteService.deleteNote(this.note.id);
+                    noteService.deleteNote(this.note.id).then(res=> {
+                        eventBus.$emit(NOTES_CHANGE);
+                    });
                     this.$emit('closeModal');
                 }
             } else {
                 this.$emit('closeModal');
             }
-            this.$emit('addedNote');
         }
     }
 

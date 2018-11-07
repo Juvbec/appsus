@@ -5,7 +5,6 @@ import newNote from '../cmps/miss-keep/new-note.cmp.js';
 export default {
     template: `
     <section class="page-content">
-        <h1>Mr. Meeseeks</h1>
         <button class="new-note-btn" @click="newNote">+</button>
         <new-note v-if="isNewNote" @addedNote="updateNotes" :currNote="currNote" @closeModal="newNote"></new-note>
         <notes-list @editNote="editNote" v-if="notes" :notes="notes"></notes-list>
