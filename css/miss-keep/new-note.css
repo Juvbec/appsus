@@ -1,0 +1,21 @@
+.new-note-form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: wheat;
+    height: 200px;
+    width: 50vw;
+    margin: 0 auto;
+}
+
+.new-note-form > * {
+    margin: 5px;
+}
+
+.new-note-form > textarea {
+    height: 150px;
+}
+
+.new-note-container {
+    /* text-align: center; */
+}
