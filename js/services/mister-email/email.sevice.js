@@ -2,13 +2,14 @@ import storageService from '../storage.service.js'
 import utilService from '../util.service.js'
 
 
-const STORAGE_KEY = 'missKeepAppKey';
+const STORAGE_KEY = 'misterEmailAppKey';
 
 export default {
     query,
     getById,
     addEmail,
-    saveEmail
+    saveEmail,
+    deleteEmail
 }
 
 function query(filter = null) {
@@ -18,10 +19,10 @@ function query(filter = null) {
                 emails = [];
                 storageService.store(STORAGE_KEY, emails);
             }
-            console.log('emails: ', emails);
+            // console.log('notes: ', notes);
             if (filter === null) return emails;
             else return emails.filter(email => 
-                            email.vendor.toUpperCase().includes(filter.byVendor.toUpperCase()));
+                            email.title.toUpperCase().includes(filter.byTitle.toUpperCase()));
         })
 }
 
@@ -33,8 +34,6 @@ function getById(emailId) {
 }
 
 function addEmail(newEmail) {
-    // console.log(newNote);
-    newEmail.id = utilService.makeId();
     saveEmail(newEmail);
 }
 
@@ -52,4 +51,13 @@ function saveEmail(email) {
             }
             return storageService.store(STORAGE_KEY, emails);
         });
+}
+
+function deleteEmail(emailId) {
+    return storageService.load(STORAGE_KEY)
+        .then(emails => {
+            var emailIdx = emails.findIndex(email => email.id === emailId);
+            emails.splice(emailIdx, 1);
+            return storageService.store(STORAGE_KEY, emails);
+        })
 }
