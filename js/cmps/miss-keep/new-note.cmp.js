@@ -14,7 +14,7 @@ export default {
                         <textarea ref="content" placeholder="Take a note..." v-model="note.content"></textarea>
                     </form>
                     <div class="note-control-panel">
-                        <i title="Discard" class="fas fa-trash" @click="discardNote"></i>
+                        <i title="Discard" class="fas fa-trash" @click="deleteNote"></i>
                         <i title="Save" class="fas fa-check" @click="addNote"></i>
                     </div>
                 </div>
@@ -51,6 +51,17 @@ export default {
             if (this.note.title.trim().length || this.note.content.trim().length){
                 if (!confirm('Discard note?')) return;
                 else this.$emit('closeModal');
+            } else {
+                this.$emit('closeModal');
+            }
+        },
+        deleteNote() {
+            if (this.note.title.trim().length || this.note.content.trim().length){
+                if (!confirm('Delete note?')) return;
+                else {
+                    noteService.deleteNote(this.note.id);
+                    this.$emit('closeModal');
+                }
             } else {
                 this.$emit('closeModal');
             }
