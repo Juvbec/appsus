@@ -12,4 +12,7 @@ export default {
             </div>
         </section>
     `,
+    created() {
+        // console.log(this.note)
+    },
 }

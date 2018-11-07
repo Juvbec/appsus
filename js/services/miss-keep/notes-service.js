@@ -17,10 +17,10 @@ function query(filter = null) {
                 notes = [];
                 storageService.store(STORAGE_KEY, notes);
             }
-            console.log('notes: ', notes);
+            // console.log('notes: ', notes);
             if (filter === null) return notes;
             else return notes.filter(note => 
-                            note.vendor.toUpperCase().includes(filter.byVendor.toUpperCase()));
+                            note.title.toUpperCase().includes(filter.byTitle.toUpperCase()));
         })
 }
 
@@ -32,8 +32,6 @@ function getById(noteId) {
 }
 
 function addNote(newNote) {
-    // console.log(newNote);
-    newNote.id = utilService.makeId();
     saveNote(newNote);
 }
 

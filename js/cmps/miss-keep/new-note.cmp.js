@@ -39,7 +39,7 @@ export default {
         addNote() {
             this.note.at = Date.now();
             console.log(this.note)
-            noteService.addNote(this.note);
+            noteService.saveNote(this.note);
             this.$emit('closeModal');
         },
         discardNote() {
