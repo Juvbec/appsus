@@ -10,11 +10,11 @@ export default {
 
                 <div class="new-note-modal" @click.stop>
                     <form @submit.prevent="" class="new-note-form">
-                        <input type="text" placeholder="Title" v-model="note.title" />
+                        <input ref="noteTitle" type="text" placeholder="Title" v-model="note.title" />
                         <textarea ref="content" placeholder="Take a note..." v-model="note.content"></textarea>
                     </form>
                     <div class="note-control-panel">
-                        <note-color></note-color>
+                        <note-color @changeColor="setColor"></note-color>
                         <i title="Discard" class="fas fa-trash" @click="deleteNote"></i>
                         <i title="Save" class="fas fa-check" @click="addNote"></i>
                     </div>
@@ -29,7 +29,7 @@ export default {
                 content: '',
                 isPinned: false,
                 at: '',
-                bgColor: '#f5deb3',
+                bgColor: {titleColor: '#d4d4d4', contentColor: '#ececec'},
             }
         }
     },
@@ -51,8 +51,11 @@ export default {
         discardNote() {
             // console.log(this.note.title.trim().length , this.note.content.trim().length)
             if (this.note.title.trim().length || this.note.content.trim().length){
-                if (!confirm('Discard note?')) return;
+                if (!confirm('Discard note?')) {
+                    return;
+                }
                 else this.$emit('closeModal');
+                eventBus.$emit(NOTES_CHANGE);
             } else {
                 this.$emit('closeModal');
             }
@@ -69,6 +72,14 @@ export default {
             } else {
                 this.$emit('closeModal');
             }
+        },
+        setColor(bgColor) {
+            // console.log(bgColor);
+            this.note.bgColor = bgColor;
+            eventBus.$emit(NOTES_CHANGE);
+            this.$refs['noteTitle'].style.backgroundColor = bgColor.titleColor;
+            this.$refs['content'].style.backgroundColor = bgColor.contentColor;
+            console.log(this.note)
         }
     },
     components: {

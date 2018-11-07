@@ -1,8 +1,8 @@
 .note-preview-content {
     padding: 5px;
-    background-color: rgb(248, 210, 140);
+    /* background-color: rgb(248, 210, 140); */
 }
-.note-preview-content > pre {
+.note-preview-content > pre , .note-preview-title {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -10,7 +10,7 @@
 
 .note-preview-title {
     padding: 5px;
-    background-color: rgb(241, 189, 92);
+    /* background-color: rgb(241, 189, 92); */
     font-weight: bold;
 }
 
