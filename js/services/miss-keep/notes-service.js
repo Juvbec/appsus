@@ -33,20 +33,22 @@ function getById(noteId) {
 
 function addNote(newNote) {
     // console.log(newNote);
+    newNote.id = utilService.makeId();
+    saveNote(newNote);
 }
 
-function saveCar(car) {
-    return storageService.load(KEY)
-        .then(cars => {
+function saveNote(note) {
+    return storageService.load(STORAGE_KEY)
+        .then(notes => {
             // Update
-            if (car.id) {
-                var carIdx = cars.findIndex(currCar => currCar.id === car.id)
-                cars.splice(carIdx, 1, car);
+            if (note.id) {
+                var noteIdx = notes.findIndex(currNote => currNote.id === note.id)
+                notes.splice(noteIdx, 1, note);
             } else {
                 // Add
-                car.id = utilService.makeId();
-                cars.push(car);
+                note.id = utilService.makeId();
+                notes.push(note);
             }
-            return storageService.store(KEY, cars);
+            return storageService.store(STORAGE_KEY, notes);
         });
 }
