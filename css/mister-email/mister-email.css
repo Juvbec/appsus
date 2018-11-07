@@ -60,3 +60,50 @@
 
 
 /* compose email */
+.compose-email {
+  margin: 5% 5% 0;
+  display: flex;
+  flex-direction: column;
+}
+.compose-email .compose-func {
+  display: flex;
+  margin-bottom: 10px;
+  border-bottom: 1px solid lightgrey;
+}
+.compose-email .label-holder {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.compose-email label {
+  display: flex;
+  align-items: center;
+}
+.compose-email span {
+  min-width: 55px;
+  text-align: center;
+}
+.compose-email input {
+  padding: 10px;
+  flex-grow: 1;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+}
+
+.compose-email textarea {
+  resize: none;
+  flex: 1;
+  border: none;
+  padding: 10px;
+}
+.compose-email input:focus, 
+.compose-email textarea:focus {
+  outline: none;
+}
+.compose-email button {
+  border: none;
+  background: none;
+}
+.compose-email button:hover {
+  background-color: lightgrey;
+}
