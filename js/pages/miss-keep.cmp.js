@@ -7,8 +7,8 @@ export default {
     <section class="page-content">
         <h1>Mr. Meeseeks</h1>
         <button class="new-note-btn" @click="newNote">+</button>
-        <new-note v-if="isNewNote"></new-note>
-        <notes-list :notes="notes" @newNote="addNote"></notes-list>
+        <new-note v-if="isNewNote" @closeModal="newNote"></new-note>
+        <notes-list :notes="notes"></notes-list>
     </section>
     `,
     data() {
@@ -21,10 +21,8 @@ export default {
         this.notes = noteService.query(); 
     },
     methods: {
-        addNote() {
-            noteService.addNote();
-        },
         newNote() {
+            console.log('isNewNote', this.isNewNote)
             this.isNewNote = !this.isNewNote;
             
         }
