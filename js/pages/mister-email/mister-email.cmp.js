@@ -2,9 +2,14 @@ import emailList from '../../cmps/mister-email/email-list.cmp.js';
 
 export default {
     template: `
-    <section class="page-content">
+    <section class="page-content mister-email">
+        <section class="main-email">
+        <nav></nav>
         <email-list></email-list>
-        <button class="compose-btn" @click="composeEmail">+</button>
+        </section>
+
+        <router-view></router-view>
+        <!-- <button class="compose-btn" @click="composeEmail">+</button> -->
     </section>
     `,
     methods: {

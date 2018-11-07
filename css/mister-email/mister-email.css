@@ -1,4 +1,12 @@
-
+.mister-email-content {
+  flex-grow: 2;
+}
+.mister-email {
+  display:flex;
+}
+.main-email {
+  flex-grow: 1;
+}
 
 
 
