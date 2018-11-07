@@ -1,0 +1,36 @@
+.note-color {
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    border: 1px solid black;
+}
+
+.note-color-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.note-color:hover {
+    cursor: pointer;
+}
+
+.color-white {
+    background-color: #fff;
+    color: #ececec;
+}
+
+.color-yellow {
+    background-color: #f8d28c;
+}
+
+.color-blue {
+    background-color: #48dada;
+}
+
+.color-green {
+    background-color: #50ca50;
+}
+.color-purple {
+    background-color: #d38ae6;
+}

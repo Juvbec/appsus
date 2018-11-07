@@ -1,6 +1,6 @@
 import noteService from '../../services/miss-keep/notes-service.js';
 import eventBus , {NOTES_CHANGE} from '../../services/event-bus.service.js';
-
+import noteColor from './note-color.cmp.js';
 
 export default {
     props: ['currNote'],
@@ -14,6 +14,7 @@ export default {
                         <textarea ref="content" placeholder="Take a note..." v-model="note.content"></textarea>
                     </form>
                     <div class="note-control-panel">
+                        <note-color></note-color>
                         <i title="Discard" class="fas fa-trash" @click="deleteNote"></i>
                         <i title="Save" class="fas fa-check" @click="addNote"></i>
                     </div>
@@ -69,6 +70,9 @@ export default {
                 this.$emit('closeModal');
             }
         }
+    },
+    components: {
+        noteColor,
     }
 
 }
