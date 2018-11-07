@@ -1,3 +1,4 @@
+import emailService from '../../services/mister-email/email.sevice.js';
 
 export default {
     template: `
@@ -10,27 +11,33 @@ export default {
             <div class="label-holder">
                 <label>
                     <span>to:</span> 
-                    <input type="text" v-model="recipient">
+                    <input type="text" v-model="email.recipient">
                 </label>
                 <label v-if="recipient">
                     <span>Cc:</span> 
-                    <input type="text">
+                    <input type="text" v-model="email.cc">
                 </label>
                 <label>
                     <span>subject:</span>  
-                    <input type="text">
+                    <input type="text" v-model="email.subject">
                 </label>
             </div>
-            <textarea placeholder="Enter message here..."></textarea>
+            <textarea v-model="email.message" placeholder="Enter message here..."></textarea>
         </section>
     `,
     data() {
         return {
-            recipient: null
+            email: {
+                recipient: null,
+                subject: null,
+                cc: null,
+                message: null
+            }
         }
     },
     methods: {
         sendEmail() {
+            emailService.addEmail(this.email)
             this.goBack()
         },
         goBack() {
