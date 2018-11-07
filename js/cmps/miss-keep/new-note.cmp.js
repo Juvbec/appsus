@@ -42,12 +42,12 @@ export default {
     methods: {
         addNote() {
             if (this.note.at === '') this.note.at = Date.now();
-            console.log(this.note)
+            // console.log(this.note)
             noteService.addNote(this.note);
             this.$emit('closeModal');
         },
         discardNote() {
-            console.log(this.note.title.trim().length , this.note.content.trim().length)
+            // console.log(this.note.title.trim().length , this.note.content.trim().length)
             if (this.note.title.trim().length || this.note.content.trim().length){
                 if (!confirm('Discard note?')) return;
                 else this.$emit('closeModal');

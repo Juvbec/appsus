@@ -41,6 +41,11 @@ header, footer {
     text-align: center;
 }
 
+header {
+    display: flex;
+    justify-content: space-around;
+}
+
 #app {
     display: flex;
     flex-direction: column;
@@ -50,6 +55,10 @@ header, footer {
     position: relative;
     flex-grow: 1;
     /* background: url('../img/mr-meeseeks.jpg') no-repeat center; */
+}
+
+.logo {
+    max-width: 100px;
 }
 
 
