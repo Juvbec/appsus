@@ -1,4 +1,4 @@
-import noteService from '../../services/miss-keep/notes-service.js';
+import emailService from '../../services/mister-email/email.sevice.js';
 
 
 export default {

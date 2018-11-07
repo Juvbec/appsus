@@ -31,3 +31,29 @@
     background-color: #f3f3f3;
     border: 1px solid #666;
   }
+  .email-prev:hover {
+    background-color: lemonchiffon;
+  }
+
+
+
+  /* compose email btn */
+  .compose-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: white;
+    color: red;
+    border: 2px solid red;
+    border-radius: 50%;
+}
+.compose-btn:hover {
+  background-color: red;
+  color: white;
+}
