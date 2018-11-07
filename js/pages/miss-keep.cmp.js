@@ -5,13 +5,12 @@ export default {
     template: `
     <section class="page-content">
         <h1>Mr. Meeseeks</h1>
-        <notes-list v-if="!newNote" :notes="notes" @newNote="addNote"></notes-list>
+        <notes-list :notes="notes" @newNote="addNote"></notes-list>
     </section>
     `,
     data() {
         return {
             notes: null,
-            newNote: false,
         }
     },
     created() {

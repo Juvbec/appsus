@@ -5,10 +5,10 @@
 .new-note-btn {
     border-radius: 50%;
     border: 0;
-    background-color: blue;
+    background-color: white;
     width: 30px;
     height: 30px;
-    color: white;
+    color: blue;
     font-weight: bold;
     font-size: 1.2em;
     text-align: center;
@@ -16,11 +16,14 @@
     top: 0;
     right: 0;
     margin: 10px;
-}
-
-.new-note-btn:hover {
-    background-color: white;
-    color: blue;
     border: 2px solid blue;
 }
 
+.new-note-btn:hover {
+    background-color: blue;
+    color: white;
+}
+
+.new-note-btn:active {
+    background-color: navy;
+}
