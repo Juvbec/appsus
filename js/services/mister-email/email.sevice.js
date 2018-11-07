@@ -58,6 +58,7 @@ function deleteEmail(emailId) {
         .then(emails => {
             var emailIdx = emails.findIndex(email => email.id === emailId);
             emails.splice(emailIdx, 1);
-            return storageService.store(STORAGE_KEY, emails);
+            storageService.store(STORAGE_KEY, emails);
+            return Promise.resolve(emails);
         })
 }
