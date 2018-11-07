@@ -58,16 +58,13 @@
   align-items: center;
   width: 100%;
   height: 30px;
-  background-color: #f3f3f3;
-  border: 1px solid #666;
+  border-bottom: 1px solid lightgray;
+  padding: 5px;
 }
 .email-prev:hover {
   background-color: lemonchiffon;
 }
 .email-btn.fa-trash {
-  /* position: absolute; */
-  /* right: 0;
-  bottom: 0; */
   color: red;
 }
 .email-btn.fa-trash:hover{
@@ -76,8 +73,16 @@
 }
 
 
+/* email details */
+.email-details .email-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+}
+
 /* compose email */
-.compose-email {
+.compose-email, .email-list, .email-details {
   margin: 5% 5% 0;
   display: flex;
   flex-direction: column;
