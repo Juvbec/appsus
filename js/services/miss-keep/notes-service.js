@@ -32,5 +32,21 @@ function getById(noteId) {
 }
 
 function addNote(newNote) {
-    
+    // console.log(newNote);
+}
+
+function saveCar(car) {
+    return storageService.load(KEY)
+        .then(cars => {
+            // Update
+            if (car.id) {
+                var carIdx = cars.findIndex(currCar => currCar.id === car.id)
+                cars.splice(carIdx, 1, car);
+            } else {
+                // Add
+                car.id = utilService.makeId();
+                cars.push(car);
+            }
+            return storageService.store(KEY, cars);
+        });
 }
