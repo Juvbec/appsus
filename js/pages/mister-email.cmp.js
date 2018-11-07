@@ -1,7 +1,7 @@
 export default {
     template: `
     <section class="page-content">
-        <h1>misships</h1>
+        <h1>msiter♣♣email</h1>
     </section>
     `
 }

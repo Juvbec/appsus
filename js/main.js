@@ -6,5 +6,10 @@ new Vue({
     router,
     components: {
         // userMsg
+    },
+    methods: {
+        goHome() {
+            this.$router.push('/');
+        }
     }
 });
