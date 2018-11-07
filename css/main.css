@@ -10,7 +10,9 @@ html,body, #app {
     margin: 0;
     padding: 0;
 }
-
+* {
+    box-sizing: border-box;
+}
 
 header, footer {
     height: 100px;
@@ -25,4 +27,22 @@ header, footer {
 }
 .page-content {
     flex-grow: 1;
+}
+
+
+/* HOME PAGE */
+.home-page {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    /* align-items: center; */
+}
+
+.home-page-link {
+    background-color: var(--secondary);
+    width: 30%;
+    margin: 100px 0;
+    padding: 20px;
+    border-radius: 10%;
 }
