@@ -23,10 +23,12 @@ export default {
     },
     methods: {
         newNote() {
+            this.currNote = null;
             console.log('isNewNote', this.isNewNote)
             this.isNewNote = !this.isNewNote; 
         },
         updateNotes(){
+            console.log('updateNotes')
             noteService.query().then(notes => {
                 this.notes = notes;
             }); 

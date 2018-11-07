@@ -8,7 +8,8 @@ export default {
     query,
     getById,
     addNote,
-    saveNote
+    saveNote,
+    deleteNote,
 }
 
 function query(filter = null) {
@@ -50,4 +51,13 @@ function saveNote(note) {
             }
             return storageService.store(STORAGE_KEY, notes);
         });
+}
+
+function deleteNote(noteId) {
+    return storageService.load(STORAGE_KEY)
+        .then(notes => {
+            var noteIdx = notes.findIndex(note => note.id === noteId);
+            notes.splice(noteIdx, 1);
+            return storageService.store(STORAGE_KEY, notes);
+        })
 }
