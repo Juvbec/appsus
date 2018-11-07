@@ -1,0 +1,28 @@
+/* ROOT */
+:root {
+    --background: #f0f5f9;
+    --main: #c9d6df;
+    --secondary: #52616b;
+    --text: #1e2022;
+}
+html,body, #app {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+header, footer {
+    height: 100px;
+    background-color: var(--main);
+    text-align: center;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.page-content {
+    flex-grow: 1;
+}
