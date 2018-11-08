@@ -1,8 +1,12 @@
 .notes-list-container {
     position: relative;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* justify-content: space-around; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-auto-rows: auto;
+    grid-gap: 10px;
 }
 
 .new-note-btn {

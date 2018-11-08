@@ -16,10 +16,19 @@
 }
 
 .note-preview-container {
-    max-height: 150px;
-    width: 150px;
+    /* max-height: 150px; */
+    /* height: fit-content; */
+    /* min-height: 50px; */
+    align-self: stretch;
+    justify-content: stretch;
+    display: flex;
+    flex-direction: column;
+    /* width: 150px; */
     transition: .3s;
-    margin: 10px;
+    /* margin: 10px; */
+}
+.note-preview-content {
+    flex-grow: 1;
 }
 
 .note-preview-container:hover {
