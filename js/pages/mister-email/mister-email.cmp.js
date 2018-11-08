@@ -1,10 +1,10 @@
 import emailList from '../../cmps/mister-email/email-list.cmp.js';
-
+import emailNav from '../../cmps/mister-email/email-nav.cmp.js'
 export default {
     template: `
     <section class="page-content mister-email">
         <section class="main-email">
-        <nav></nav>
+        <email-nav></email-nav>
         <email-list></email-list>
         </section>
 
@@ -18,6 +18,7 @@ export default {
         }
     },
     components: {
-        emailList
+        emailList,
+        emailNav
     }
 }

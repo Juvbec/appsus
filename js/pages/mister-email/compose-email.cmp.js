@@ -2,11 +2,10 @@ import emailService from '../../services/mister-email/email.sevice.js';
 import eventBus, {EMAIL_CHANGE} from '../../services/event-bus.service.js'
 export default {
     template: `
-        <section class="page-content compose-email">
-            <div class="compose-func">
+        <section class="mister-email-content compose-email">
+            <div class="compose-func flex space-between">
                 <button @click="goBack">X</button>
                 <button @click="sendEmail">Send ></button>
-                <button @click="sendEmail">add attachment</button>
             </div>
             <div class="label-holder">
                 <label>
@@ -30,8 +29,8 @@ export default {
             email: {
                 recipient: '',
                 cc: null,
-                sender: 'Me',
-                subject: null,
+                sender: 'Myself',
+                subject: '',
                 message: null,
                 isMine: true,
             }
@@ -56,6 +55,7 @@ export default {
         sendEmail() {
             if (!this.checkValidity) return;
             this.email.cc = this.ccs;
+            this.email.isRead = false;
             this.email.createdAt = Date.now();
             emailService.addEmail(this.email)
             .then(()=>{
