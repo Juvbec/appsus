@@ -1,5 +1,6 @@
 import emailPreview from './email-preview.cmp.js'
 import emailService from '../../services/mister-email/email.sevice.js';
+import eventBus, {EMAIL_CHANGE} from '../../services/event-bus.service.js';
 
 export default {
     template: `
@@ -31,6 +32,9 @@ export default {
     },
     created() {
         this.getEmails()
+        eventBus.$on(EMAIL_CHANGE, this.getEmails)
+
+        
     },
     components: {
         emailPreview

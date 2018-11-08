@@ -119,7 +119,6 @@
   border: none;
   border-bottom: 1px solid lightgrey;
 }
-
 .compose-email textarea {
   resize: none;
   flex: 1;
@@ -136,4 +135,10 @@
 }
 .compose-email button:hover {
   background-color: lightgrey;
+}
+.compose-email .valid {
+  
+}
+.compose-email .not-valid {
+  box-shadow: inset 0px 0px 8px tomato;
 }

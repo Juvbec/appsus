@@ -1,5 +1,5 @@
 import emailService from '../../services/mister-email/email.sevice.js';
-
+import eventBus, {EMAIL_CHANGE} from '../../services/event-bus.service.js'
 export default {
     template: `
         <section class="page-content compose-email">
@@ -11,7 +11,7 @@ export default {
             <div class="label-holder">
                 <label>
                     <span>to:</span> 
-                    <input type="text" v-model="email.recipient">
+                    <input type="text" :class="ValidityClasses" v-model="email.recipient">
                 </label>
                 <label v-if="email.recipient">
                     <span>Cc:</span> 
@@ -28,12 +28,12 @@ export default {
     data() {
         return {
             email: {
-                recipient: null,
+                recipient: '',
                 cc: null,
                 sender: 'Me',
                 subject: null,
                 message: null,
-                isMine: true
+                isMine: true,
             }
         }
     },
@@ -41,13 +41,27 @@ export default {
         ccs() {
             if (!this.email.cc) return null;
             return this.email.cc.split(',');
+        },
+        ValidityClasses() {
+            return {
+                'valid': this.checkValidity,
+                'not-valid': !this.checkValidity
+            }
+        },
+        checkValidity() {
+            return emailService.verifyEmailAddress(this.email.recipient);
         }
     },
     methods: {
         sendEmail() {
+            if (!this.checkValidity) return;
             this.email.cc = this.ccs;
+            this.email.createdAt = Date.now();
             emailService.addEmail(this.email)
-            this.goBack()
+            .then(()=>{
+                eventBus.$emit(EMAIL_CHANGE);
+            })
+            this.goBack();
         },
         goBack() {
             this.$router.push('/misteremail');
