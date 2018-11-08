@@ -35,7 +35,7 @@
 
 .new-note-form > input {
     padding: 10px;
-    background-color: transparent;
+    background-color: #d4d4d4;
     border: 1px solid rgba(169, 169, 169, 1);
     font-weight: bold;
 
@@ -43,7 +43,7 @@
 
 .new-note-form > textarea {
     height: 100%;
-    background-color: transparent;
+    background-color: #ececec;
     padding: 10px;
     resize: none;
 }

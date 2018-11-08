@@ -8,7 +8,9 @@ export default {
 
         <button class="new-note-btn" @click="newNote">+</button>
         <new-note v-if="isNewNote" @addedNote="updateNotes" :currNote="currNote" @closeModal="newNote"></new-note>
-        <notes-list @editNote="editNote" v-if="notes" :notes="notes"></notes-list>
+        <transition name="fade">
+            <notes-list @editNote="editNote" v-if="notes" :notes="notes"></notes-list>
+        </transition>
     </section>
     `,
     data() {
@@ -24,16 +26,16 @@ export default {
     methods: {
         newNote() {
             this.currNote = null;
-            console.log('isNewNote', this.isNewNote)
-            this.isNewNote = !this.isNewNote; 
+            // console.log('isNewNote', this.isNewNote)
+            this.isNewNote = !this.isNewNote;
         },
-        updateNotes(){
-            console.log('updateNotes')
+        updateNotes() {
+            // console.log('updateNotes')
             noteService.query().then(notes => {
                 this.notes = notes;
-            }); 
+            });
         },
-        editNote(noteToEdit) {        
+        editNote(noteToEdit) {
             this.currNote = noteToEdit;
             this.isNewNote = true;
             // this.currNote = null;

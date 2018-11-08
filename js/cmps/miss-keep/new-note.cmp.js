@@ -7,7 +7,7 @@ export default {
     template: `
         <section class="new-note-container">
             <div class="screen-blur" @click="discardNote">
-
+            <transition name="slide-fade">
                 <div class="new-note-modal" @click.stop>
                     <form @submit.prevent="" class="new-note-form">
                         <input ref="noteTitle" type="text" placeholder="Title" v-model="note.title" />
@@ -19,6 +19,7 @@ export default {
                         <i title="Save" class="fas fa-check" @click="addNote"></i>
                     </div>
                 </div>
+            </transition>
             </div>
         </section>
     `,

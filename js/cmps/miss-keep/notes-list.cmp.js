@@ -16,7 +16,7 @@ export default {
     },
     methods: {
         updateNotes(){
-            console.log('updateNotes')
+            // console.log('updateNotes')
             noteService.query().then(notes => {
                 this.notes = notes;
                 this.pinnedFirst();

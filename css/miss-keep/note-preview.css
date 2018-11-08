@@ -39,3 +39,10 @@
     opacity: 1;
 }
 
+/* .fa-thumbtack.pinned{
+    color: inherit;
+} */
+
+.fa-thumbtack:active {
+    transform: scale(0.9);
+}
