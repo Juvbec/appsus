@@ -1,6 +1,8 @@
 import emailPreview from './email-preview.cmp.js'
 import emailService from '../../services/mister-email/email.sevice.js';
-import eventBus, {EMAIL_CHANGE} from '../../services/event-bus.service.js';
+import eventBus, {EMAIL_CHANGE, CHANGE_EMAIL_FILTER, UPDATE_EMAIL} from '../../services/event-bus.service.js';
+
+// import scrollBar from '../temp/vue-scrollbar.vue'
 
 export default {
     template: `
@@ -13,12 +15,17 @@ export default {
     `,
     data() {
         return {
-            emails: []
+            emails: [],
+            filter: {
+                byTxt: '',
+                byNew: true,
+                isRead: 'all',
+            }
         }
     },
     methods: {
         getEmails() {
-            emailService.query()
+            emailService.query(this.filter)
             .then((emails)=>{
                 this.emails = emails;
             });
@@ -31,9 +38,16 @@ export default {
         }
     },
     created() {
-        this.getEmails()
-        eventBus.$on(EMAIL_CHANGE, this.getEmails)
-
+        this.getEmails();
+        eventBus.$on(EMAIL_CHANGE, this.getEmails);
+        eventBus.$on(CHANGE_EMAIL_FILTER,filter => {
+            this.filter = filter;
+            this.getEmails();
+        })
+        eventBus.$on(UPDATE_EMAIL, (email=>{
+            emailService.saveEmail(email)
+            .then(this.getEmails)
+        }))
         
     },
     components: {

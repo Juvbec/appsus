@@ -2,11 +2,10 @@ import emailService from '../../services/mister-email/email.sevice.js';
 import eventBus, {EMAIL_CHANGE} from '../../services/event-bus.service.js'
 export default {
     template: `
-        <section class="page-content compose-email">
-            <div class="compose-func">
+        <section class="mister-email-content compose-email">
+            <div class="compose-func flex space-between">
                 <button @click="goBack">X</button>
                 <button @click="sendEmail">Send ></button>
-                <button @click="sendEmail">add attachment</button>
             </div>
             <div class="label-holder">
                 <label>
@@ -22,7 +21,7 @@ export default {
                     <input type="text" v-model="email.subject">
                 </label>
             </div>
-            <textarea v-model="email.message" placeholder="Enter message here..."></textarea>
+            <textarea ref="emailMessage" v-model="email.message" placeholder="Enter message here..."></textarea>
         </section>
     `,
     data() {
@@ -30,11 +29,23 @@ export default {
             email: {
                 recipient: '',
                 cc: null,
-                sender: 'Me',
-                subject: null,
+                sender: 'Myself@fake.com',
+                subject: '',
                 message: null,
                 isMine: true,
             }
+        }
+    },
+    mounted() {
+        if (this.$route.params.emailId) {
+            this.createReplyTemplate();
+
+            // SET CURSOR POSITION -- NEED TO FOCUS ON THE BEGINNING
+            
+            // this.placeCursorOnBeginning(this.$refs.emailMessage);
+            this.$refs.emailMessage.focus();
+            this.$refs.emailMessage.setSelectionRange(0,0);
+
         }
     },
     computed: {
@@ -56,6 +67,7 @@ export default {
         sendEmail() {
             if (!this.checkValidity) return;
             this.email.cc = this.ccs;
+            this.email.isRead = false;
             this.email.createdAt = Date.now();
             emailService.addEmail(this.email)
             .then(()=>{
@@ -65,6 +77,32 @@ export default {
         },
         goBack() {
             this.$router.push('/misteremail');
+        },
+        createReplyTemplate() {
+            emailService.getById(this.$route.params.emailId).then(email => {
+                console.log(email);
+                this.email.recipient = email.recipient;
+                this.email.subject = `RE:${email.subject}`;
+                this.email.message = 
+                `
+                
+
+> On ${email.createdAt} ${email.sender} sent: 
+    "
+    ${email.message}
+    "
+                `;
+            });
+        },
+        placeCursorOnBeginning(txtElement) {
+            if (txtElement.setSelectionRange) { 
+                txtElement.focus(); 
+                txtElement.setSelectionRange(0, 0); 
+            } else if (txtElement.createTextRange) { 
+                var range = txtElement.createTextRange();  
+                range.moveStart('character', 0); 
+                range.select(); 
+            } 
         }
     }
 }

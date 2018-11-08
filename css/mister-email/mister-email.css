@@ -1,73 +1,70 @@
-.mister-email-content {
-  flex-grow: 2;
-}
+/* the father element */
 .mister-email {
   display:flex;
+  max-height: 100%;
 }
+/* =================================================== */
+/* the father element of the list (left side of mister email)*/
 .main-email {
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
 }
 
+/* ============================= */
+           /* nav */
+.email-list-nav {
+  display: flex;
+  flex-direction: column;
+  min-height: 70px;
+  margin: 10px 10px 0;
+  background: lightblue;
+}
+.email-list-nav nav {
+  display: flex;
+}
+.email-list-nav button {
+  flex-grow: 1;
+  background: none;
+  border: none;
+  padding: 10px;
+}
+.email-list-nav button:hover {
+  background-color: rgb(56, 139, 187);
+}
+.email-list-nav input {
+  width: 100%;
+  flex-grow: 1;
+  padding: 5px;
+}
 
-
-/* list */
+/* ============================= */
+           /* list */
 .email-list {
+  display: flex;
+  flex-direction: column;
     position: relative;
     padding: 0;
-  }
-  /* 1. declare transition */
-  .fade-move, .fade-enter-active, .fade-leave-active {
-    transition: all .5s cubic-bezier(.55,0,.1,1);
-  }
-  /* 2. declare enter from and leave to state */
-  .fade-enter, .fade-leave-to {
-    opacity: 0;
-    transform: scaleY(0.01) translate(30px, 0);
-  }
-  /* 3. ensure leaving items are taken out of layout flow so that moving
-        animations can be calculated correctly. */
-  .fade-leave-active {
-    position: absolute;
-  }
-
-
-
-
-
-  /* compose email btn */
-  .compose-btn {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 40px;
-    height: 40px;
-    margin: 10px;
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    background-color: white;
-    color: red;
-    border: 2px solid red;
-    border-radius: 50%;
-}
-.compose-btn:hover {
-  background-color: red;
-  color: white;
+  margin: 0 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-grow: 1;
 }
 
-/* email preview */
-.email-list {
-
-}
-
+/* ============================= */
+       /* email preview */
 .email-prev {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 30px;
+  min-height: 30px;
   border-bottom: 1px solid lightgray;
   padding: 5px;
+  cursor: pointer;
+}
+.email-prev.notread {
+  background-color: rgba(161, 179, 228, 0.801);
 }
 .email-prev:hover {
   background-color: lemonchiffon;
@@ -79,22 +76,35 @@
   color: black;
   cursor: pointer;
 }
+/* transition for the email preview */
+  .fade-move, .fade-enter-active, .fade-leave-active {
+    transition: all .5s cubic-bezier(.55,0,.1,1);
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+    transform: scaleY(0.01) translate(30px, 0);
+  }
+  .fade-leave-active {
+    position: absolute;
+  }
 
 
-/* email details */
-.email-details .email-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 5px;
-}
 
-/* compose email */
-.compose-email, .email-list, .email-details {
-  margin: 5% 5% 0;
+/* =================================================== */
+/* every router view inside mister email (left side) */
+.mister-email-content {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
+
+/* home */
+/* doesnt have css. if it's needed please insert here */
+
+
+/* ============================= */
+      /* compose email */
+
 .compose-email .compose-func {
   display: flex;
   margin-bottom: 10px;
@@ -137,8 +147,59 @@
   background-color: lightgrey;
 }
 .compose-email .valid {
-  
+  /* TODO */
 }
 .compose-email .not-valid {
   box-shadow: inset 0px 0px 8px tomato;
+}
+
+
+
+
+/* email details */
+.email-details nav {
+  display: flex;
+  min-height: 70px;  
+  margin: 10px 10px 0;
+  background-color: lightblue;
+}
+.email-details .email-btn {
+  background: none;
+  border: none;
+  padding: 10px;
+}
+.email-details .email-btn:hover {
+  background-color: rgb(56, 139, 187);
+}
+
+.details-container {
+  margin: 0 10px;
+}
+
+
+
+
+
+
+
+
+/* compose email btn */
+.compose-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  background-color: white;
+  color: red;
+  border: 2px solid red;
+  border-radius: 50%;
+}
+.compose-btn:hover {
+background-color: red;
+color: white;
 }

@@ -20,10 +20,17 @@ function query(filter = null) {
                 emails = [];
                 storageService.store(STORAGE_KEY, emails);
             }
-            // console.log('notes: ', notes);
+            
             if (filter === null) return emails;
-            else return emails.filter(email =>
-                email.title.toUpperCase().includes(filter.byTitle.toUpperCase()));
+
+            else return emails.filter(email => {
+                return (
+                    email.subject.toUpperCase().includes(filter.byTxt.toUpperCase())
+                    && (email.isRead === filter.isRead || filter.isRead==='all')  
+                );
+            }).sort((email1,email2)=>{
+                return (email1.createdAt > email2.createdAt) === filter.byNew;
+            })
         })
 }
 
@@ -70,3 +77,4 @@ function verifyEmailAddress(address) {
     var emailRE = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
     return emailRE.test(address);
 }
+
