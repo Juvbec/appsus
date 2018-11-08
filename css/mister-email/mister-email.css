@@ -16,12 +16,15 @@
 .email-list-nav {
   display: flex;
   flex-direction: column;
-  min-height: 70px;
-  margin: 10px 10px 0;
+  /* min-height: 70px; */
+  margin: 0 10px;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
   background: lightblue;
 }
 .email-list-nav nav {
   display: flex;
+  min-height: 30px;
 }
 .email-list-nav button {
   flex-grow: 1;
@@ -41,11 +44,11 @@
 /* ============================= */
            /* list */
 .email-list {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
     position: relative;
     padding: 0;
-  margin: 0 10px;
+    margin: 0 10px;
     overflow-y: auto;
     overflow-x: hidden;
     flex-grow: 1;
@@ -60,11 +63,13 @@
   width: 100%;
   min-height: 30px;
   border-bottom: 1px solid lightgray;
-  padding: 5px;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  padding: 5px 8px 0 10px;
   cursor: pointer;
 }
 .email-prev.notread {
-  background-color: rgba(161, 179, 228, 0.801);
+  background-color: rgba(107, 186, 238, 0.349);
 }
 .email-prev:hover {
   background-color: lemonchiffon;
@@ -96,6 +101,9 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 /* home */
@@ -109,6 +117,7 @@
   display: flex;
   margin-bottom: 10px;
   border-bottom: 1px solid lightgrey;
+  min-height: 40px;
 }
 .compose-email .label-holder {
   display: flex;
@@ -155,12 +164,11 @@
 
 
 
-
-/* email details */
+/* ============================= */
+       /* email details */
 .email-details nav {
   display: flex;
-  min-height: 70px;  
-  margin: 10px 10px 0;
+  min-height: 30px;
   background-color: lightblue;
 }
 .email-details .email-btn {
@@ -174,6 +182,8 @@
 
 .details-container {
   margin: 0 10px;
+  padding: 20px 20px 0;
+  flex-grow: 1;
 }
 
 

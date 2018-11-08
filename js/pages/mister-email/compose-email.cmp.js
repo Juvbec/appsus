@@ -1,4 +1,5 @@
 import emailService from '../../services/mister-email/email.sevice.js';
+import utilService from '../../services/util.service.js'
 import eventBus, {EMAIL_CHANGE} from '../../services/event-bus.service.js'
 export default {
     template: `
@@ -39,13 +40,9 @@ export default {
     mounted() {
         if (this.$route.params.emailId) {
             this.createReplyTemplate();
-
-            // SET CURSOR POSITION -- NEED TO FOCUS ON THE BEGINNING
+            utilService.resetCursor(this.$refs.emailMessage);
+            console.log(this.$refs.emailMessage);
             
-            // this.placeCursorOnBeginning(this.$refs.emailMessage);
-            this.$refs.emailMessage.focus();
-            this.$refs.emailMessage.setSelectionRange(0,0);
-
         }
     },
     computed: {
@@ -87,22 +84,12 @@ export default {
                 `
                 
 
-> On ${email.createdAt} ${email.sender} sent: 
+> On ${moment(email.createdAt)} ${email.sender} sent: 
     "
     ${email.message}
     "
                 `;
             });
         },
-        placeCursorOnBeginning(txtElement) {
-            if (txtElement.setSelectionRange) { 
-                txtElement.focus(); 
-                txtElement.setSelectionRange(0, 0); 
-            } else if (txtElement.createTextRange) { 
-                var range = txtElement.createTextRange();  
-                range.moveStart('character', 0); 
-                range.select(); 
-            } 
-        }
     }
 }
