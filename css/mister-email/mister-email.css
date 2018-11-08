@@ -168,9 +168,12 @@
   border: none;
   padding: 10px;
 }
+.email-details .email-btn:hover {
+  background-color: rgb(56, 139, 187);
+}
 
 .details-container {
-  margin: 0 10px;  
+  margin: 0 10px;
 }
 
 

@@ -6,10 +6,12 @@ export default {
         <section class="mister-email-content email-details" v-if="email">
             <nav>
                 <button class="email-btn" @click="goBack">Go Back</button>
+                <button class="email-btn" @click="onReply">Reply</button>
             </nav>
             <div class="details-container">
                 <h1>{{email.subject}}</h1>
-                <h3>From: {{email.sender}} , To: {{email.recipient}}</h3>
+                <h3>From: {{email.sender}}</h3>
+                <h4>To: {{email.recipient}}</h4>
                 <h4>cc: <span v-for="cc in email.cc">{{cc}}, </span></h4>
                 <pre>{{email.message}}</pre>
             </div>
@@ -32,6 +34,9 @@ export default {
             this.email.isRead = true;
             eventBus.$emit(UPDATE_EMAIL, this.email)
         })
+        },
+        onReply() {
+            this.$router.push(`/misteremail/compose/${this.email.id}`);            
         }
     },
     created() {

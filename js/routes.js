@@ -12,6 +12,7 @@ const routes = [
     children: [
       {path: '', component: emailHome},
       {path: 'compose', component: composeEmail},
+      {path: 'compose/:emailId?', component: composeEmail},
       {path: ':emailId', component: emailDetails},
     ]},
   ];

@@ -21,7 +21,7 @@ export default {
                     <input type="text" v-model="email.subject">
                 </label>
             </div>
-            <textarea v-model="email.message" placeholder="Enter message here..."></textarea>
+            <textarea ref="emailMessage" v-model="email.message" placeholder="Enter message here..."></textarea>
         </section>
     `,
     data() {
@@ -29,11 +29,23 @@ export default {
             email: {
                 recipient: '',
                 cc: null,
-                sender: 'Myself',
+                sender: 'Myself@fake.com',
                 subject: '',
                 message: null,
                 isMine: true,
             }
+        }
+    },
+    mounted() {
+        if (this.$route.params.emailId) {
+            this.createReplyTemplate();
+
+            // SET CURSOR POSITION -- NEED TO FOCUS ON THE BEGINNING
+            
+            // this.placeCursorOnBeginning(this.$refs.emailMessage);
+            this.$refs.emailMessage.focus();
+            this.$refs.emailMessage.setSelectionRange(0,0);
+
         }
     },
     computed: {
@@ -65,6 +77,32 @@ export default {
         },
         goBack() {
             this.$router.push('/misteremail');
+        },
+        createReplyTemplate() {
+            emailService.getById(this.$route.params.emailId).then(email => {
+                console.log(email);
+                this.email.recipient = email.recipient;
+                this.email.subject = `RE:${email.subject}`;
+                this.email.message = 
+                `
+                
+
+> On ${email.createdAt} ${email.sender} sent: 
+    "
+    ${email.message}
+    "
+                `;
+            });
+        },
+        placeCursorOnBeginning(txtElement) {
+            if (txtElement.setSelectionRange) { 
+                txtElement.focus(); 
+                txtElement.setSelectionRange(0, 0); 
+            } else if (txtElement.createTextRange) { 
+                var range = txtElement.createTextRange();  
+                range.moveStart('character', 0); 
+                range.select(); 
+            } 
         }
     }
 }
