@@ -1,4 +1,5 @@
 import eventBus, {CHANGE_EMAIL_FILTER} from '../../services/event-bus.service.js'
+import emailFilter from '../mister-email/email-filter.cmp.js';
 
 export default {
     template: `
@@ -8,6 +9,7 @@ export default {
             <button class="email-nav-btn">delete</button>
             <button class="email-nav-btn" @click="composeEmail">compose</button>
         </nav>
+        <email-filter></email-filter>
         <input type="text"
                 class="search-email-input"
                 v-model="filter.byTxt"
@@ -31,5 +33,8 @@ export default {
         onChangeFilter() {
             eventBus.$emit(CHANGE_EMAIL_FILTER, this.filter)
         }
+    },
+    components: {
+        emailFilter,
     }
 }

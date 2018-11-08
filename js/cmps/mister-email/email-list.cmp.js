@@ -1,4 +1,4 @@
-import emailPreview from './email-preview.cmp.js'
+import emailPreview from '../../pages/mister-email/email-preview.cmp.js';
 import emailService from '../../services/mister-email/email.sevice.js';
 import eventBus, {EMAIL_CHANGE, CHANGE_EMAIL_FILTER, UPDATE_EMAIL} from '../../services/event-bus.service.js';
 
