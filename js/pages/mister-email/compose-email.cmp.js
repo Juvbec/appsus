@@ -97,7 +97,9 @@ export default {
         placeCursorOnBeginning(txtElement) {
             if (txtElement.setSelectionRange) { 
                 txtElement.focus(); 
-                txtElement.setSelectionRange(0, 0); 
+                setTimeout(()=> {
+                    txtElement.setSelectionRange(0, 0); 
+                }, 0);
             } else if (txtElement.createTextRange) { 
                 var range = txtElement.createTextRange();  
                 range.moveStart('character', 0); 
