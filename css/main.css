@@ -1,7 +1,3 @@
-.test {
-    background-color: transparent;
-}
-
 @import './miss-keep/notes-list.css';
 @import './miss-keep/new-note.css';
 @import './miss-keep/note-preview.css';
