@@ -9,7 +9,8 @@ export default {
     getById,
     addEmail,
     saveEmail,
-    deleteEmail
+    deleteEmail,
+    verifyEmailAddress
 }
 
 function query(filter = null) {
@@ -21,8 +22,8 @@ function query(filter = null) {
             }
             // console.log('notes: ', notes);
             if (filter === null) return emails;
-            else return emails.filter(email => 
-                            email.title.toUpperCase().includes(filter.byTitle.toUpperCase()));
+            else return emails.filter(email =>
+                email.title.toUpperCase().includes(filter.byTitle.toUpperCase()));
         })
 }
 
@@ -35,6 +36,7 @@ function getById(emailId) {
 
 function addEmail(newEmail) {
     saveEmail(newEmail);
+    return Promise.resolve();
 }
 
 function saveEmail(email) {
@@ -61,4 +63,10 @@ function deleteEmail(emailId) {
             storageService.store(STORAGE_KEY, emails);
             return Promise.resolve(emails);
         })
+}
+
+function verifyEmailAddress(address) {
+    // var emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    var emailRE = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+    return emailRE.test(address);
 }

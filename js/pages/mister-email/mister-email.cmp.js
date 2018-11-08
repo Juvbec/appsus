@@ -9,7 +9,7 @@ export default {
         </section>
 
         <router-view></router-view>
-        <!-- <button class="compose-btn" @click="composeEmail">+</button> -->
+        <button class="compose-btn" @click="composeEmail">+</button>
     </section>
     `,
     methods: {
