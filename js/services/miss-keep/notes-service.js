@@ -21,9 +21,13 @@ function query(filter = null) {
             }
             // console.log('notes: ', notes);
             if (filter === null) return notes;
-            else return notes.filter(note => 
-                            note.title.toUpperCase().includes(filter.byTitle.toUpperCase()));
-        })
+            else return notes.filter(note => {
+                if (filter.byContent)
+                    note.content.toUpperCase().includes(filter.byContent.toUpperCase());
+                if (filter.byTitle)
+                    note.title.toUpperCase().includes(filter.byTitle.toUpperCase());
+            });
+        });
 }
 
 function getById(noteId) {

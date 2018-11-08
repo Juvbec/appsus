@@ -2,6 +2,8 @@
 @import './miss-keep/new-note.css';
 @import './miss-keep/note-preview.css';
 @import './miss-keep/note-color.css';
+@import './miss-keep/miss-keep.css';
+@import './miss-keep/notes-filter.css';
 
 @import './mister-email/mister-email.css';
 @import './helpers.css';

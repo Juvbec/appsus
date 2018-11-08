@@ -26,12 +26,20 @@ export default {
             var pinnedNotes = this.notes.filter(note => note.isPinned);
             var unPinnedNotes = this.notes.filter(note => !note.isPinned);
             this.notes = pinnedNotes.concat(unPinnedNotes);
+        },
+        setFilter(filter) {
+            console.log(filter)
+            noteService.query(filter)
+            .then(notes => this.notes = notes)
         }
     },
     created() {
         this.updateNotes();
         eventBus.$on(NOTES_CHANGE , ()=>{
             this.updateNotes();
+        });
+        eventBus.$on('filtered' , filter => {
+            this.setFilter(filter);
         })
 
     },

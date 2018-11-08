@@ -1,0 +1,9 @@
+.action-bar {
+    margin : 10px;
+    /* padding : 10px; */
+    text-align: center;
+}
+
+.search-bar > input {
+    text-align: center;
+}
