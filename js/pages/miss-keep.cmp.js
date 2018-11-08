@@ -6,13 +6,15 @@ import notesFilter from '../cmps/miss-keep/notes-filter.cmp.js';
 export default {
     template: `
     <section class="page-content">
+    <transition name="bounce">
+        <new-note class="new-note-cmp" v-if="isNewNote" @addedNote="updateNotes" :currNote="currNote" @closeModal="newNote"></new-note>
+    </transition>
         <div class="action-bar">
             <notes-filter class="search-bar"></notes-filter>
             <button class="new-note-btn" @click="newNote">+</button>
         </div>
-        <new-note v-if="isNewNote" @addedNote="updateNotes" :currNote="currNote" @closeModal="newNote"></new-note>
         <transition name="fade">
-            <notes-list @editNote="editNote" v-if="notes" :notes="notes"></notes-list>
+            <notes-list @editNote="editNote" v-if="notes"></notes-list>
         </transition>
     </section>
     `,

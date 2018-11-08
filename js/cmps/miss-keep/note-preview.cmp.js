@@ -11,6 +11,7 @@ export default {
                 <i @click.stop="pinNote" v-else="" class="fas fa-thumbtack"></i>
             </div>
             <div class="note-preview-content" ref="noteContent">
+                <i title="Contains Image" v-if="note.img" class="far fa-image"></i>
                 <pre>{{note.content}}</pre>
             </div>
         </section>
