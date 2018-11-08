@@ -1,5 +1,5 @@
 import noteService from '../../services/miss-keep/notes-service.js';
-import eventBus , {NOTES_CHANGE} from '../../services/event-bus.service.js';
+import eventBus, { NOTES_CHANGE, COLOR_CHANGE } from '../../services/event-bus.service.js';
 import noteColor from './note-color.cmp.js';
 
 export default {
@@ -18,6 +18,7 @@ export default {
                             <i class="select-button fas fa-image"></i>
                             <input type="file" accept="image/*" @change="handleFileChange"/>
                         </label>
+                        <i class="fas fa-list-alt" :class="todoClasses" @click="onTodoIconClicked"></i>
                         <i title="Discard" class="fas fa-trash" @click="deleteNote"></i>
                         <i title="Save" class="fas fa-check" @click="addNote"></i>
                     </div>
@@ -26,7 +27,6 @@ export default {
                         <img v-if="note.img" :src="note.img" ref="noteImgContent" class="note-img"/>
                     </div>
                 </div>
-                
             </div>
         </section>
     `,
@@ -37,9 +37,10 @@ export default {
                 content: '',
                 isPinned: false,
                 at: '',
-                bgColor: {titleColor: '#d4d4d4', contentColor: '#ececec'},
+                bgColor: { titleColor: '#d4d4d4', contentColor: '#ececec' },
                 img: null,
-            }, 
+                isTodo: false,
+            },
             value: undefined,
         }
     },
@@ -47,6 +48,7 @@ export default {
         if (this.currNote) this.note = this.currNote;
     },
     mounted() {
+        if (this.currNote) this.setColor(this.currNote.bgColor);
         this.$refs.content.focus();
     },
     methods: {
@@ -60,7 +62,7 @@ export default {
         },
         discardNote() {
             // console.log(this.note.title.trim().length , this.note.content.trim().length)
-            if (this.note.title.trim().length || this.note.content.trim().length || this.note.img){
+            if (this.note.title.trim().length || this.note.content.trim().length || this.note.img) {
                 if (!confirm('Discard note?')) {
                     return;
                 }
@@ -71,31 +73,37 @@ export default {
             }
         },
         deleteNote() {
-            if (this.note.title.trim().length || this.note.content.trim().length || this.note.img){
+            if (this.note.title.trim().length || this.note.content.trim().length || this.note.img) {
                 if (!confirm('Delete note?')) return;
                 else {
-                    noteService.deleteNote(this.note.id).then(res=> {
+                    noteService.deleteNote(this.note.id).then(res => {
                         eventBus.$emit(NOTES_CHANGE);
                     });
                     this.$emit('closeModal');
                 }
             } else {
+                if (this.note.id) {
+                    noteService.deleteNote(this.note.id).then(res => {
+                        eventBus.$emit(NOTES_CHANGE);
+                    });
+                }
                 this.$emit('closeModal');
             }
         },
         setColor(bgColor) {
             // console.log(bgColor);
             this.note.bgColor = bgColor;
-            eventBus.$emit(NOTES_CHANGE);
             this.$refs['noteTitle'].style.backgroundColor = bgColor.titleColor;
             this.$refs['content'].style.backgroundColor = bgColor.contentColor;
-            console.log(this.note)
+            if (!this.currNote) return;
+            eventBus.$emit(COLOR_CHANGE);
+            // console.log(this.note)
         },
         handleFileChange(ev) {
             // this.note.img = ev.target.files[0];
             if (ev.target.files[0]) {
                 var FR = new FileReader();
-                FR.readAsDataURL( ev.target.files[0] );
+                FR.readAsDataURL(ev.target.files[0]);
                 FR.onload = () => {
                     this.note.img = FR.result;
                     eventBus.$emit(NOTES_CHANGE);
@@ -106,6 +114,17 @@ export default {
         deleteImg() {
             if (!confirm('Delete image?')) return;
             else this.note.img = '';
+        },
+        onTodoIconClicked() {
+            this.note.isTodo = !this.note.isTodo;
+            console.log('todo clicked', this.note.isTodo);
+        }
+    },
+    computed: {
+        todoClasses() {
+            return {
+                clicked: (this.note.isTodo)
+            }
         }
     },
     components: {

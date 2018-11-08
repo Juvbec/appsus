@@ -40,7 +40,7 @@ export default {
                     bgColor.className = 'purple';
                     break;
             }
-            console.log(bgColor);
+            // console.log(bgColor);
             for (let i = 0 ; i < Object.keys(this.$refs).length ; i++) {
                 let curr = Object.keys(this.$refs)[i];
                 this.$refs[curr].style.border = '1px solid black';

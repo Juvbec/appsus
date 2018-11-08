@@ -68,14 +68,17 @@
     display: flex;
     justify-content: space-around;
 }
-.fa-check , .fa-trash , .select-button{
+.fa-check , .fa-trash , .select-button, .fa-list-alt {
     /* position: absolute; */
     /* right: 0;
     bottom: 0; */
     color: goldenrod;
 }
+.fa-list-alt.clicked {
+    color: black;
+}
 
-.fa-check:hover , .fa-trash:hover , .select-button:hover{
+.fa-check:hover , .fa-trash:hover , .select-button:hover, .fa-list-alt:hover {
     color: black;
     cursor: pointer;
 }
@@ -83,6 +86,8 @@
 .file-select > input[type="file"] {
     display: none;
 }
+
+
 
 .note-img {
     border: 2px solid black;

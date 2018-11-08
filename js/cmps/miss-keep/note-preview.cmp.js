@@ -1,5 +1,5 @@
 import notesService from '../../services/miss-keep/notes-service.js';
-import eventBus , {NOTES_CHANGE} from '../../services/event-bus.service.js';
+import eventBus , {NOTES_CHANGE , COLOR_CHANGE} from '../../services/event-bus.service.js';
 
 export default {
     props: ['note'],
@@ -17,11 +17,10 @@ export default {
         </section>
     `,
     created() {
-        // console.log(this.note)
+        eventBus.$on(COLOR_CHANGE, this.changeColors);
     },
     mounted() {
-        this.$refs['noteTitle'].style.backgroundColor = this.note.bgColor.titleColor;
-        this.$refs['noteContent'].style.backgroundColor = this.note.bgColor.contentColor;
+        this.changeColors();
     },
     methods: {
         pinNote() {
@@ -29,6 +28,11 @@ export default {
             notesService.saveNote(this.note).then(res => {
                 eventBus.$emit(NOTES_CHANGE);
             });
+        },
+        changeColors() {
+            this.$refs['noteTitle'].style.backgroundColor = this.note.bgColor.titleColor;
+            this.$refs['noteContent'].style.backgroundColor = this.note.bgColor.contentColor;
+            // console.log('changecolors',this.note);
         }
     }
 }

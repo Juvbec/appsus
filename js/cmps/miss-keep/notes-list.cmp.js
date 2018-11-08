@@ -35,9 +35,7 @@ export default {
     },
     created() {
         this.updateNotes();
-        eventBus.$on(NOTES_CHANGE , ()=>{
-            this.updateNotes();
-        });
+        eventBus.$on(NOTES_CHANGE , this.updateNotes);
         eventBus.$on('filtered' , filter => {
             this.setFilter(filter);
         })
