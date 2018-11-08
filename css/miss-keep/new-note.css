@@ -1,3 +1,8 @@
+.new-note-cmp {
+    /* position: fixed;
+    top: 0; */
+}
+
 .screen-blur {
     height: 100vh;
     width: 100vw;
@@ -63,14 +68,51 @@
     display: flex;
     justify-content: space-around;
 }
-.fa-check , .fa-trash{
+.fa-check , .fa-trash , .select-button{
     /* position: absolute; */
     /* right: 0;
     bottom: 0; */
     color: goldenrod;
 }
 
-.fa-check:hover , .fa-trash:hover{
+.fa-check:hover , .fa-trash:hover , .select-button:hover{
     color: black;
     cursor: pointer;
+}
+  
+.file-select > input[type="file"] {
+    display: none;
+}
+
+.note-img {
+    border: 2px solid black;
+    padding: 3px;
+    max-height: 200px;
+    margin: 5px;
+}
+
+.img-container {
+    position: relative;
+    width: fit-content;
+}
+.img-container:hover > .fa-trash-alt {
+    display: unset;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    opacity: 0.5;
+    font-size: 2em;
+}
+
+.img-container > .fa-trash-alt {
+    display: none;
+}
+
+.img-container > .fa-trash-alt:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.img-container > .fa-trash-alt:active {
+    color: red;
 }

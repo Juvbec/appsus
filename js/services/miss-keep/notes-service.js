@@ -10,6 +10,7 @@ export default {
     addNote,
     saveNote,
     deleteNote,
+    getBase64Image,
 }
 
 function query(filter = null) {
@@ -19,13 +20,17 @@ function query(filter = null) {
                 notes = [];
                 storageService.store(STORAGE_KEY, notes);
             }
-            // console.log('notes: ', notes);
-            if (filter === null) return notes;
+            // console.log('notes: ', notes, 'filter: ', filter);
+            if (filter === null || (filter.byTitle.trim() === '' && filter.byContent.trim() === '')) return notes;
             else return notes.filter(note => {
-                if (filter.byContent)
-                    note.content.toUpperCase().includes(filter.byContent.toUpperCase());
-                if (filter.byTitle)
-                    note.title.toUpperCase().includes(filter.byTitle.toUpperCase());
+                if (filter.byContent && filter.byTitle) {
+                    return note.content.toUpperCase().includes(filter.byContent.toUpperCase()) ||
+                            note.title.toUpperCase().includes(filter.byTitle.toUpperCase());
+                } else if (filter.byContent) {
+                    return note.content.toUpperCase().includes(filter.byContent.toUpperCase());
+                } else if (filter.byTitle) {
+                    return note.title.toUpperCase().includes(filter.byTitle.toUpperCase());
+                }
             });
         });
 }
@@ -65,4 +70,14 @@ function deleteNote(noteId) {
             notes.splice(noteIdx, 1);
             return storageService.store(STORAGE_KEY, notes);
         })
+}
+
+function getBase64Image(img) {
+    // var FR = new FileReader();
+    // FR.readAsDataURL(img);
+    // var prmRes = FR.onload = () => {
+    //     return Promise.resolve(FR.result);
+    // };
+    // return prmRes.then(() => prmRes);
+
 }

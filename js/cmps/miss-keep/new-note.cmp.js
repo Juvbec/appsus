@@ -7,7 +7,6 @@ export default {
     template: `
         <section class="new-note-container">
             <div class="screen-blur" @click="discardNote">
-            <transition name="slide-fade">
                 <div class="new-note-modal" @click.stop>
                     <form @submit.prevent="" class="new-note-form">
                         <input ref="noteTitle" type="text" placeholder="Title" v-model="note.title" />
@@ -15,11 +14,19 @@ export default {
                     </form>
                     <div class="note-control-panel">
                         <note-color @changeColor="setColor"></note-color>
+                        <label class="file-select">
+                            <i class="select-button fas fa-image"></i>
+                            <input type="file" accept="image/*" @change="handleFileChange"/>
+                        </label>
                         <i title="Discard" class="fas fa-trash" @click="deleteNote"></i>
                         <i title="Save" class="fas fa-check" @click="addNote"></i>
                     </div>
+                    <div class="img-container">
+                        <i title="Discard" class="far fa-trash-alt" @click="deleteImg"></i>
+                        <img v-if="note.img" :src="note.img" ref="noteImgContent" class="note-img"/>
+                    </div>
                 </div>
-            </transition>
+                
             </div>
         </section>
     `,
@@ -31,7 +38,9 @@ export default {
                 isPinned: false,
                 at: '',
                 bgColor: {titleColor: '#d4d4d4', contentColor: '#ececec'},
-            }
+                img: null,
+            }, 
+            value: undefined,
         }
     },
     created() {
@@ -51,7 +60,7 @@ export default {
         },
         discardNote() {
             // console.log(this.note.title.trim().length , this.note.content.trim().length)
-            if (this.note.title.trim().length || this.note.content.trim().length){
+            if (this.note.title.trim().length || this.note.content.trim().length || this.note.img){
                 if (!confirm('Discard note?')) {
                     return;
                 }
@@ -62,7 +71,7 @@ export default {
             }
         },
         deleteNote() {
-            if (this.note.title.trim().length || this.note.content.trim().length){
+            if (this.note.title.trim().length || this.note.content.trim().length || this.note.img){
                 if (!confirm('Delete note?')) return;
                 else {
                     noteService.deleteNote(this.note.id).then(res=> {
@@ -81,6 +90,22 @@ export default {
             this.$refs['noteTitle'].style.backgroundColor = bgColor.titleColor;
             this.$refs['content'].style.backgroundColor = bgColor.contentColor;
             console.log(this.note)
+        },
+        handleFileChange(ev) {
+            // this.note.img = ev.target.files[0];
+            if (ev.target.files[0]) {
+                var FR = new FileReader();
+                FR.readAsDataURL( ev.target.files[0] );
+                FR.onload = () => {
+                    this.note.img = FR.result;
+                    eventBus.$emit(NOTES_CHANGE);
+                    // console.log(this.note.img)
+                }
+            }
+        },
+        deleteImg() {
+            if (!confirm('Delete image?')) return;
+            else this.note.img = '';
         }
     },
     components: {

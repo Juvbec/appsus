@@ -28,7 +28,7 @@ export default {
             this.notes = pinnedNotes.concat(unPinnedNotes);
         },
         setFilter(filter) {
-            console.log(filter)
+            // console.log(filter)
             noteService.query(filter)
             .then(notes => this.notes = notes)
         }
