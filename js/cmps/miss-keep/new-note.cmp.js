@@ -1,6 +1,7 @@
 import noteService from '../../services/miss-keep/notes-service.js';
-import eventBus, { NOTES_CHANGE, COLOR_CHANGE } from '../../services/event-bus.service.js';
+import eventBus, { NOTES_CHANGE, COLOR_CHANGE, SAVE_NOTE } from '../../services/event-bus.service.js';
 import noteColor from './note-color.cmp.js';
+import todosList from './todos-list.cmp.js';
 
 export default {
     props: ['currNote'],
@@ -26,6 +27,7 @@ export default {
                         <i title="Discard" class="far fa-trash-alt" @click="deleteImg"></i>
                         <img v-if="note.img" :src="note.img" ref="noteImgContent" class="note-img"/>
                     </div>
+                    <todos-list v-if="note.isTodo" :note="note"></todos-list>
                 </div>
             </div>
         </section>
@@ -40,6 +42,7 @@ export default {
                 bgColor: { titleColor: '#d4d4d4', contentColor: '#ececec' },
                 img: null,
                 isTodo: false,
+                todos: '',
             },
             value: undefined,
         }
@@ -57,13 +60,14 @@ export default {
             // console.log(this.note)
             noteService.addNote(this.note).then(res => {
                 eventBus.$emit(NOTES_CHANGE);
+                eventBus.$emit(SAVE_NOTE);
             });
             this.$emit('closeModal');
         },
         discardNote() {
             // console.log(this.note.title.trim().length , this.note.content.trim().length)
             if (this.note.title.trim().length || this.note.content.trim().length || this.note.img) {
-                if (!confirm('Discard note?')) {
+                if (!confirm('Discard changes?')) {
                     return;
                 }
                 else this.$emit('closeModal');
@@ -129,6 +133,7 @@ export default {
     },
     components: {
         noteColor,
+        todosList,
     }
 
 }

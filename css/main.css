@@ -4,6 +4,7 @@
 @import './miss-keep/note-color.css';
 @import './miss-keep/miss-keep.css';
 @import './miss-keep/notes-filter.css';
+@import './miss-keep/todos-list.css';
 
 @import './mister-email/mister-email.css';
 @import './helpers.css';
@@ -29,6 +30,8 @@ html,body, #app {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
     font-family: lato;
 }
 * {
@@ -49,7 +52,7 @@ button:focus {
     outline: 0;
 }
 
-header {
+header.app-header {
     height: 100px;
     background-color: var(--main);
     text-align: center;
@@ -57,7 +60,7 @@ header {
     justify-content: space-around;
     align-items: center;
 }
-footer {
+footer.app-footer {
  height: 50px;
  background-color: var(--main);
     text-align: center;

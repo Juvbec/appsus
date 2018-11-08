@@ -89,5 +89,17 @@ export default {
                 `;
             });
         },
+        placeCursorOnBeginning(txtElement) {
+            if (txtElement.setSelectionRange) { 
+                txtElement.focus(); 
+                setTimeout(()=> {
+                    txtElement.setSelectionRange(0, 0); 
+                }, 0);
+            } else if (txtElement.createTextRange) { 
+                var range = txtElement.createTextRange();  
+                range.moveStart('character', 0); 
+                range.select(); 
+            } 
+        }
     }
 }
