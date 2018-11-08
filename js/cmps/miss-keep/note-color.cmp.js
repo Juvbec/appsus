@@ -3,11 +3,13 @@
 export default {
     template: `
         <section class="note-color-container">
-            <div ref="white" class="note-color color-white" @click="pickColor('white')"></div>
-            <div ref="yellow" class="note-color color-yellow" @click="pickColor('yellow')"></div>
-            <div ref="blue" class="note-color color-blue" @click="pickColor('blue')"></div>
-            <div ref="green" class="note-color color-green" @click="pickColor('green')"></div>
-            <div ref="purple" class="note-color color-purple" @click="pickColor('purple')"></div>
+            <div class="speech-bubble">
+                <div ref="white" class="note-color color-white" @click="pickColor('white')"></div>
+                <div ref="yellow" class="note-color color-yellow" @click="pickColor('yellow')"></div>
+                <div ref="blue" class="note-color color-blue" @click="pickColor('blue')"></div>
+                <div ref="green" class="note-color color-green" @click="pickColor('green')"></div>
+                <div ref="purple" class="note-color color-purple" @click="pickColor('purple')"></div>
+            </div>
         </section>
     `,
     methods: {

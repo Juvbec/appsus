@@ -3,6 +3,7 @@
     height: 30px;
     margin: 2px;
     border: 1px solid black;
+    border-radius: 50%;
 }
 
 .note-color-container {
@@ -33,4 +34,31 @@
 }
 .color-purple {
     background-color: #d38ae6;
+}
+
+.speech-bubble {
+	position: absolute;
+	background: rgb(100, 100, 100);
+    border-radius: .5em;
+    display: flex;
+    padding: 2px;
+    bottom: 30px;
+    transition: .3s;
+    margin-left: 30px;
+    /* opacity: 0; */
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 33%;
+	width: 0;
+	height: 0;
+	border: 16px solid transparent;
+	border-top-color: rgb(100, 100, 100);
+	border-bottom: 0;
+	margin-left: -16px;
+    margin-bottom: -16px;
+    opacity: 1;
 }

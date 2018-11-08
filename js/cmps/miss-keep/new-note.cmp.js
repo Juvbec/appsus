@@ -10,11 +10,17 @@ export default {
             <div class="screen-blur" @click="discardNote">
                 <div class="new-note-modal" @click.stop>
                     <form @submit.prevent="" class="new-note-form">
-                        <input ref="noteTitle" type="text" placeholder="Title" v-model="note.title" />
-                        <textarea ref="content" placeholder="Take a note..." v-model="note.content"></textarea>
+                        <i @click.stop="pinNote" v-if="note.isPinned" class="fas fa-thumbtack pinned"></i>
+                        <i @click.stop="pinNote" v-else="" class="fas fa-thumbtack"></i>
+                        <input @click="openColorPalette = false" ref="noteTitle" type="text" placeholder="Title" v-model="note.title" />
+                        <textarea @click="openColorPalette = false" ref="content" placeholder="Take a note..." v-model="note.content"></textarea>
                     </form>
                     <div class="note-control-panel">
-                        <note-color @changeColor="setColor"></note-color>
+                        <i class="fas fa-palette" @click="openColorPalette = !openColorPalette">
+                            <transition name="fade">
+                                <note-color v-if="openColorPalette" @changeColor="setColor"></note-color>
+                            </transition>
+                        </i>
                         <label class="file-select">
                             <i class="select-button fas fa-image"></i>
                             <input type="file" accept="image/*" @change="handleFileChange"/>
@@ -45,6 +51,7 @@ export default {
                 todos: '',
             },
             value: undefined,
+            openColorPalette: false,
         }
     },
     created() {
@@ -122,7 +129,13 @@ export default {
         onTodoIconClicked() {
             this.note.isTodo = !this.note.isTodo;
             console.log('todo clicked', this.note.isTodo);
-        }
+        },
+        pinNote() {
+            this.note.isPinned = !this.note.isPinned;
+            noteService.saveNote(this.note).then(res => {
+                eventBus.$emit(NOTES_CHANGE);
+            });
+        },
     },
     computed: {
         todoClasses() {

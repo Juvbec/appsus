@@ -13,14 +13,15 @@ export default {
             <div class="note-preview-content" ref="noteContent">
                 <i title="Contains Image" v-if="note.img" class="far fa-image"></i>
                 <pre>{{note.content}}</pre>
+                <img ref="contentImg" src=""/>
             </div>
         </section>
     `,
     created() {
-        eventBus.$on(COLOR_CHANGE, this.changeColors);
+        eventBus.$on(COLOR_CHANGE, this.setStyle);
     },
     mounted() {
-        this.changeColors();
+        this.setStyle();
     },
     methods: {
         pinNote() {
@@ -29,10 +30,14 @@ export default {
                 eventBus.$emit(NOTES_CHANGE);
             });
         },
-        changeColors() {
+        setStyle() {
             this.$refs['noteTitle'].style.backgroundColor = this.note.bgColor.titleColor;
+            if (this.note.img) {
+                let img = this.$refs.contentImg;
+                img.src = this.note.img;
+                img.style.maxWidth = '100%';
+            } 
             this.$refs['noteContent'].style.backgroundColor = this.note.bgColor.contentColor;
-            // console.log('changecolors',this.note);
         }
     }
 }

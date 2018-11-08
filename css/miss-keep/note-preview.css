@@ -1,5 +1,6 @@
 .note-preview-content {
     padding: 5px;
+    padding-top: 1px;
     position: relative;
 }
 .note-preview-content > pre , .note-preview-title {
@@ -17,7 +18,7 @@
 
 .note-preview-container {
     /* max-height: 150px; */
-    height: fit-content;
+    /* height: fit-content; */
     /* min-height: 50px; */
     /* align-self: stretch; */
     justify-content: stretch;
@@ -26,6 +27,8 @@
     /* width: 150px; */
     transition: .3s;
     margin: 10px;
+
+    /* CSS COLUMN */
     break-inside: avoid;
 }
 .note-preview-content {
@@ -33,7 +36,7 @@
 }
 
 .note-preview-container:hover {
-    transform: scale(1.1);
+    transform: scale(.95);
     cursor: pointer;
 }
 
@@ -48,6 +51,7 @@
 
 .fa-thumbtack.pinned, .fas.fa-thumbtack:hover,.note-preview-container:hover .fa-thumbtack.pinned {
     opacity: 1;
+    cursor: pointer;
 }
 
 /* .fa-thumbtack.pinned{
