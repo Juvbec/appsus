@@ -4,7 +4,7 @@
 .note-preview-content > pre , .note-preview-title {
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: pre-wrap;
 }
 
 .note-preview-title {
