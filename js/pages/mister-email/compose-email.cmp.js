@@ -40,9 +40,7 @@ export default {
     mounted() {
         if (this.$route.params.emailId) {
             this.createReplyTemplate();
-            utilService.resetCursor(this.$refs.emailMessage);
-            console.log(this.$refs.emailMessage);
-            
+            utilService.resetCursor(this.$refs.emailMessage);            
         }
     },
     computed: {
