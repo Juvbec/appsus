@@ -19,8 +19,14 @@ export default {
             console.log('updateNotes')
             noteService.query().then(notes => {
                 this.notes = notes;
+                this.pinnedFirst();
             }); 
         },
+        pinnedFirst() {
+            var pinnedNotes = this.notes.filter(note => note.isPinned);
+            var unPinnedNotes = this.notes.filter(note => !note.isPinned);
+            this.notes = pinnedNotes.concat(unPinnedNotes);
+        }
     },
     created() {
         this.updateNotes();

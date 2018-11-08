@@ -1,6 +1,5 @@
 .note-preview-content {
     padding: 5px;
-    /* background-color: rgb(248, 210, 140); */
 }
 .note-preview-content > pre , .note-preview-title {
     overflow: hidden;
@@ -9,13 +8,14 @@
 }
 
 .note-preview-title {
+    display: flex;
+    justify-content: space-between;
     padding: 5px;
-    /* background-color: rgb(241, 189, 92); */
     font-weight: bold;
 }
 
 .note-preview-container {
-    height: 150px;
+    max-height: 150px;
     width: 150px;
     transition: .3s;
     margin: 0 10px;
@@ -25,3 +25,17 @@
     transform: scale(1.1);
     cursor: pointer;
 }
+
+.fa-thumbtack {
+    opacity: 0;
+}
+
+.note-preview-container:hover .fa-thumbtack {
+    opacity: 0.3;
+    transition: .2s;
+}
+
+.fa-thumbtack.pinned, .fas.fa-thumbtack:hover,.note-preview-container:hover .fa-thumbtack.pinned {
+    opacity: 1;
+}
+
