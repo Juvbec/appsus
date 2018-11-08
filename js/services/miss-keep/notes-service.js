@@ -10,7 +10,6 @@ export default {
     addNote,
     saveNote,
     deleteNote,
-    getBase64Image,
 }
 
 function query(filter = null) {
@@ -70,14 +69,4 @@ function deleteNote(noteId) {
             notes.splice(noteIdx, 1);
             return storageService.store(STORAGE_KEY, notes);
         })
-}
-
-function getBase64Image(img) {
-    // var FR = new FileReader();
-    // FR.readAsDataURL(img);
-    // var prmRes = FR.onload = () => {
-    //     return Promise.resolve(FR.result);
-    // };
-    // return prmRes.then(() => prmRes);
-
 }
