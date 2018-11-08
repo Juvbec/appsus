@@ -45,6 +45,7 @@
   flex-direction: column;
     position: relative;
     padding: 0;
+  margin: 0 10px;
     overflow-y: auto;
     overflow-x: hidden;
     flex-grow: 1;
@@ -92,6 +93,8 @@
 /* =================================================== */
 /* every router view inside mister email (left side) */
 .mister-email-content {
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
 }
 
@@ -104,7 +107,6 @@
 
 .compose-email .compose-func {
   display: flex;
-  flex-direction: column;
   margin-bottom: 10px;
   border-bottom: 1px solid lightgrey;
 }
@@ -165,6 +167,10 @@
   background: none;
   border: none;
   padding: 10px;
+}
+
+.details-container {
+  margin: 0 10px;  
 }
 
 

@@ -7,10 +7,12 @@ export default {
             <nav>
                 <button class="email-btn" @click="goBack">Go Back</button>
             </nav>
-            <h1>{{email.subject}}</h1>
-            <h3>From: {{email.sender}} , To: {{email.recipient}}</h3>
-            <h4>cc: <span v-for="cc in email.cc">{{cc}}, </span></h4>
-            <pre>{{email.message}}</pre>
+            <div class="details-container">
+                <h1>{{email.subject}}</h1>
+                <h3>From: {{email.sender}} , To: {{email.recipient}}</h3>
+                <h4>cc: <span v-for="cc in email.cc">{{cc}}, </span></h4>
+                <pre>{{email.message}}</pre>
+            </div>
         </section>
     `,
     data() {
