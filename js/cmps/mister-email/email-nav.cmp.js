@@ -8,7 +8,11 @@ export default {
             <button class="email-nav-btn">delete</button>
             <button class="email-nav-btn" @click="composeEmail">compose</button>
         </nav>
-        <input type="text" class="search-email-input" v-model="filter.byTxt" @input.lazy="onChangeFilter">
+        <input type="text"
+                class="search-email-input"
+                v-model="filter.byTxt"
+                @input.lazy="onChangeFilter"
+                placeholder="search...">
     </section>
     `,
     data() {
