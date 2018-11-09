@@ -91,9 +91,8 @@ export default {
                 this.$emit('closeModal');
             }
         },
-        deleteNote(note) {
-            if (note === undefined) var note = this.note;
-            if (note.title.trim().length || note.content.trim().length || note.img || (note.todos && note.todos.length)) {
+        deleteNote(ev , note = this.note) {
+            if (note.title.trim().length || note.content.trim().length || note.img || note.todos.length) {
                 if (!confirm('Delete note?')) return;
                 else {
                     noteService.deleteNote(note.id).then(res => {
@@ -102,7 +101,7 @@ export default {
                     this.$emit('closeModal');
                 }
             } else {
-                if (this.note.id) {
+                if (note.id) {
                     noteService.deleteNote(note.id).then(res => {
                         eventBus.$emit(NOTES_CHANGE);
                     });
