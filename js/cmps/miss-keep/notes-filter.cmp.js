@@ -3,6 +3,7 @@ import eventBus from '../../services/event-bus.service.js';
 export default {
     template:`
     <section class="notes-filter">
+        <i class="fas fa-search" @click="emitFilter"></i>
         <input class="search-bar" type="text" v-model="filterKey" @input="emitFilter" placeholder="Search Note" />
         <div class="filter-checkboxs">
             <label for="byTitle">
@@ -10,7 +11,7 @@ export default {
                 By Title
             </label>
             <label for="byContent">
-                <input class="filter-checkbox" type="checkbox" id="byContent" ref="byContent" @change="emitFilter">
+                <input class="filter-checkbox" type="checkbox" id="byContent" ref="byContent" checked @change="emitFilter">
                 By Content
             </label>
         </div>

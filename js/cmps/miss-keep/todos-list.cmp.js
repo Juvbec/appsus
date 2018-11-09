@@ -171,6 +171,6 @@ var todoStorage = {
     notesService.saveNote(note);
     eventBus.$emit(NOTES_CHANGE);
 
-    console.log(note)
+    // console.log(note)
   }
 }

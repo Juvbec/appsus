@@ -1,5 +1,5 @@
 import noteService from '../../services/miss-keep/notes-service.js';
-import eventBus, { NOTES_CHANGE, COLOR_CHANGE, SAVE_NOTE } from '../../services/event-bus.service.js';
+import eventBus, { NOTES_CHANGE, COLOR_CHANGE, SAVE_NOTE, DELETE_NOTE } from '../../services/event-bus.service.js';
 import noteColor from './note-color.cmp.js';
 import todosList from './todos-list.cmp.js';
 
@@ -59,6 +59,9 @@ export default {
     },
     created() {
         if (this.currNote) this.note = this.currNote;
+        eventBus.$on(DELETE_NOTE, note => {
+            this.deleteNote(note);
+        })
     },
     mounted() {
         if (this.currNote) this.setColor(this.currNote.bgColor);
@@ -88,18 +91,18 @@ export default {
                 this.$emit('closeModal');
             }
         },
-        deleteNote() {
-            if (this.note.title.trim().length || this.note.content.trim().length || this.note.img || this.note.todos.length) {
+        deleteNote(ev , note = this.note) {
+            if (note.title.trim().length || note.content.trim().length || note.img || note.todos.length) {
                 if (!confirm('Delete note?')) return;
                 else {
-                    noteService.deleteNote(this.note.id).then(res => {
+                    noteService.deleteNote(note.id).then(res => {
                         eventBus.$emit(NOTES_CHANGE);
                     });
                     this.$emit('closeModal');
                 }
             } else {
-                if (this.note.id) {
-                    noteService.deleteNote(this.note.id).then(res => {
+                if (note.id) {
+                    noteService.deleteNote(note.id).then(res => {
                         eventBus.$emit(NOTES_CHANGE);
                     });
                 }

@@ -46,7 +46,7 @@
     .new-note-btn {
         position: fixed;
         top: unset;
-        bottom: 10px;
+        bottom: 40px;
         right: 10px;
         transform: scale(1.5);
     }
