@@ -15,6 +15,7 @@ export default {
                             <i @click.stop="pinNote" v-else="" class="fas fa-thumbtack"></i>
                             <input @click="openColorPalette = false" ref="noteTitle" type="text" placeholder="Title" v-model="note.title" />
                             <textarea @click="openColorPalette = false" ref="content" placeholder="Take a note..." v-model="note.content"></textarea>
+                            <span v-if="note.at" class="edit-time">Edited {{editTime}}</span>
                         </form>
                         <div class="img-container">
                             <i title="Discard" class="far fa-trash-alt" @click="deleteImg"></i>
@@ -65,7 +66,7 @@ export default {
     },
     methods: {
         addNote() {
-            if (this.note.at === '') this.note.at = Date.now();
+            this.note.at = Date.now();
             // console.log(this.note)
             noteService.addNote(this.note).then(res => {
                 eventBus.$emit(NOTES_CHANGE);
@@ -75,7 +76,7 @@ export default {
         },
         discardNote() {
             // console.log(this.note.title.trim().length , this.note.content.trim().length)
-            if (this.note.title.trim().length || this.note.content.trim().length || this.note.img) {
+            if (this.note.title.trim().length || this.note.content.trim().length || this.note.img || this.note.todos.length) {
                 if (!confirm('Discard changes?')) {
                     return;
                 }
@@ -86,7 +87,7 @@ export default {
             }
         },
         deleteNote() {
-            if (this.note.title.trim().length || this.note.content.trim().length || this.note.img) {
+            if (this.note.title.trim().length || this.note.content.trim().length || this.note.img || this.note.todos.length) {
                 if (!confirm('Delete note?')) return;
                 else {
                     noteService.deleteNote(this.note.id).then(res => {
@@ -144,6 +145,9 @@ export default {
             return {
                 clicked: (this.note.isTodo)
             }
+        },
+        editTime() {
+            return moment(this.note.at).fromNow();
         }
     },
     components: {

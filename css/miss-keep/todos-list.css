@@ -343,13 +343,31 @@ html .todoapp .clear-completed:active {
 		appearance: none;
 	}
 }
-
-@media (max-width: 430px) {
+.todoapp .footer {
+	height: 60px;
+}
+.todoapp .filters {
+	bottom: 10px;
+}
+/* @media (max-width: 430px) {
 	.todoapp .footer {
-		height: 50px;
+		height: 60px;
 	}
 
 	.todoapp .filters {
 		bottom: 10px;
+	}
+} */
+
+.todoapp {
+	transform: scale(.9);
+}
+.todoapp .main {
+	max-height: 40vh;
+	overflow-y: auto;
+}
+@media (max-width: 768px) {
+	.todoapp .main {
+		max-height: 20vh;
 	}
 }

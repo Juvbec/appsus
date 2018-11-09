@@ -24,7 +24,8 @@
     width: 50vw;
     margin: 0 auto;
     background-color: #f5deb3;
-    border-radius: 2%;
+    border-bottom-left-radius: 2%;
+    border-bottom-right-radius: 2%;
     /* padding: 10px; */
 }
 
@@ -137,6 +138,23 @@
 .img-text-container {
     display: flex;
     flex-direction: row-reverse;
+    align-items: center;
+}
+
+.img-text-container img {
+    max-width: 100%;
+}
+
+.edit-time {
+    color: black;
+    opacity: 0.3;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    font-size: .9rem;
+    /* z-index: 1; */
+
 }
 
 /* ANIMATION */
@@ -165,7 +183,7 @@
     }
   }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .new-note-modal {
         /* transform: scale(1.5); */
         max-height: 90vh;
