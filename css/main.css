@@ -87,7 +87,8 @@ footer.app-footer {
 
 /* HOME PAGE */
 .home-page {
-    position: relative;
+    /* background-image:  */
+    /* position: relative; */
     display: flex;
     justify-content: space-around;
     align-items: stretch;
