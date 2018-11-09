@@ -91,8 +91,9 @@ export default {
                 this.$emit('closeModal');
             }
         },
-        deleteNote(note = this.note) {
-            if (note.title.trim().length || note.content.trim().length || note.img || note.todos.length) {
+        deleteNote(note) {
+            if (note === undefined) var note = this.note;
+            if (note.title.trim().length || note.content.trim().length || note.img || (note.todos && note.todos.length)) {
                 if (!confirm('Delete note?')) return;
                 else {
                     noteService.deleteNote(note.id).then(res => {
