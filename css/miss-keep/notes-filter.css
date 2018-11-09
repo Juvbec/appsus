@@ -59,3 +59,8 @@
     font-size: .9rem;
     opacity: 0.5;
 }
+
+.fa-search:hover {
+    opacity: 1;
+    cursor: pointer;
+}
