@@ -10,7 +10,7 @@ export default {
                 By Title
             </label>
             <label for="byContent">
-                <input class="filter-checkbox" type="checkbox" id="byContent" ref="byContent" @change="emitFilter">
+                <input class="filter-checkbox" type="checkbox" id="byContent" ref="byContent" checked @change="emitFilter">
                 By Content
             </label>
         </div>

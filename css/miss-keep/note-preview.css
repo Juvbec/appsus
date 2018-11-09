@@ -27,6 +27,7 @@
     /* width: 150px; */
     transition: .3s;
     margin: 10px;
+    position: relative;
 
     /* CSS COLUMN */
     break-inside: avoid;

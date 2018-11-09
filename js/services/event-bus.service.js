@@ -6,6 +6,7 @@ export const CHANGE_EMAIL_FILTER = 'email-filter';
 export const DETAILED_VIEW = 'on-preview-clicked';
 export const UPDATE_EMAIL = 'update-email';
 export const SAVE_NOTE = 'save-note'
+export const DELETE_NOTE = 'delete-note';
 
 var bus = new Vue();
 

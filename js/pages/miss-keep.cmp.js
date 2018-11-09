@@ -11,7 +11,7 @@ export default {
     </transition>
         <div class="action-bar">
             <notes-filter class="search-bar"></notes-filter>
-            <button class="new-note-btn" @click="newNote">+</button>
+            <button v-if="!isNewNote" class="new-note-btn" @click="newNote">+</button>
         </div>
         <transition name="fade">
             <notes-list @editNote="editNote" v-if="notes"></notes-list>

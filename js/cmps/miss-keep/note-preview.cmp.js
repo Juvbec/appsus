@@ -1,11 +1,14 @@
 import noteService from '../../services/miss-keep/notes-service.js';
 import eventBus , {NOTES_CHANGE , COLOR_CHANGE} from '../../services/event-bus.service.js';
-import todosListCmp from './todos-list.cmp.js';
+// import todosListCmp from './todos-list.cmp.js';
+import noteMenu from './note-menu.cmp.js';
 
 export default {
     props: ['note'],
     template: `
-        <section class="note-preview-container">
+        <section ref="container" class="note-preview-container" 
+               @contextmenu.prevent="" @long-press="isFloatingMenu = true">
+            <note-menu ref="noteMenu" v-show="openFloatingMenu" :note="note"></note-menu>
             <div class="note-preview-title" ref="noteTitle">
                 <span class="note-title">{{note.title}}</span>
                 <i @click.stop="pinNote" v-if="note.isPinned" class="fas fa-thumbtack pinned"></i>
@@ -21,11 +24,20 @@ export default {
             </div>
         </section>
     `,
+    data() {
+        return {
+            isFloatingMenu: false,
+        }
+    },
     created() {
         eventBus.$on(COLOR_CHANGE, this.setStyle);
     },
     mounted() {
         this.setStyle();
+        window.ontouchstart = () => {
+            console.log('close menu')
+            this.isFloatingMenu = false;
+        }
     },
     methods: {
         pinNote() {
@@ -42,9 +54,16 @@ export default {
                 img.style.maxWidth = '100%';
             } 
             this.$refs['noteContent'].style.backgroundColor = this.note.bgColor.contentColor;
-        }
+        },
+
     },
     computed: {
-
+        openFloatingMenu() {
+            return this.isFloatingMenu;
+        }
+            
+    },
+    components: {
+        noteMenu,
     }
 }
