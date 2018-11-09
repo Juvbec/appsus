@@ -67,6 +67,7 @@ export default {
     methods: {
         addNote() {
             this.note.at = Date.now();
+            if (!this.note.todos.length) this.note.isTodo = false;
             // console.log(this.note)
             noteService.addNote(this.note).then(res => {
                 eventBus.$emit(NOTES_CHANGE);
@@ -81,6 +82,7 @@ export default {
                     return;
                 }
                 else this.$emit('closeModal');
+                if (!this.note.todos.length) this.note.isTodo = false;
                 eventBus.$emit(NOTES_CHANGE);
             } else {
                 this.$emit('closeModal');
