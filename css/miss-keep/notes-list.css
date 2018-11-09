@@ -41,3 +41,13 @@
 .new-note-btn:active {
     background-color: navy;
 }
+
+@media (max-width: 768px) {
+    .new-note-btn {
+        position: fixed;
+        top: unset;
+        bottom: 10px;
+        right: 10px;
+        transform: scale(1.5);
+    }
+}

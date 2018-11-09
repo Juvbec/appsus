@@ -67,3 +67,7 @@
     position: absolute;
     right: 5px;
 }
+
+.note-preview-content li.todo-completed {
+    text-decoration: line-through;
+}

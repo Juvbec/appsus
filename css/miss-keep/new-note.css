@@ -102,10 +102,10 @@
 
 
 .note-img {
-    border: 2px solid black;
+    border: 1px solid rgba(169, 169, 169, 1);
     padding: 3px;
     max-height: 200px;
-    margin: 5px;
+    /* margin: 5px; */
 }
 
 .img-container {
@@ -132,4 +132,60 @@
 
 .img-container > .fa-trash-alt:active {
     color: red;
+}
+
+.img-text-container {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+/* ANIMATION */
+.bounce-enter-active {
+    animation-duration: .5s;
+}
+.bounce-enter-active .new-note-modal {
+    animation: bounce-in .5s;
+
+}
+.bounce-leave-active {
+    animation-duration: .7s;
+}
+.bounce-leave-active .new-note-modal {
+    animation: bounce-in .7s reverse;
+}
+@keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+@media (max-width: 768px) {
+    .new-note-modal {
+        /* transform: scale(1.5); */
+        max-height: 90vh;
+        width: 90vw;
+
+    }
+    .img-text-container {
+        flex-direction: column;
+    }
+    .img-text-container img {
+        max-height: 100px;
+    }
+
+
+    @keyframes bounce-in {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
 }

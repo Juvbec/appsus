@@ -9,12 +9,18 @@ export default {
         <section class="new-note-container">
             <div class="screen-blur" @click="discardNote">
                 <div class="new-note-modal" @click.stop>
-                    <form @submit.prevent="" class="new-note-form">
-                        <i @click.stop="pinNote" v-if="note.isPinned" class="fas fa-thumbtack pinned"></i>
-                        <i @click.stop="pinNote" v-else="" class="fas fa-thumbtack"></i>
-                        <input @click="openColorPalette = false" ref="noteTitle" type="text" placeholder="Title" v-model="note.title" />
-                        <textarea @click="openColorPalette = false" ref="content" placeholder="Take a note..." v-model="note.content"></textarea>
-                    </form>
+                    <div class="img-text-container">
+                        <form @submit.prevent="" class="new-note-form">
+                            <i @click.stop="pinNote" v-if="note.isPinned" class="fas fa-thumbtack pinned"></i>
+                            <i @click.stop="pinNote" v-else="" class="fas fa-thumbtack"></i>
+                            <input @click="openColorPalette = false" ref="noteTitle" type="text" placeholder="Title" v-model="note.title" />
+                            <textarea @click="openColorPalette = false" ref="content" placeholder="Take a note..." v-model="note.content"></textarea>
+                        </form>
+                        <div class="img-container">
+                            <i title="Discard" class="far fa-trash-alt" @click="deleteImg"></i>
+                            <img v-if="note.img" :src="note.img" ref="noteImgContent" class="note-img"/>
+                        </div>
+                    </div>
                     <div class="note-control-panel">
                         <i class="fas fa-palette" @click="openColorPalette = !openColorPalette">
                             <transition name="fade">
@@ -28,10 +34,6 @@ export default {
                         <i class="fas fa-list-alt" :class="todoClasses" @click="onTodoIconClicked"></i>
                         <i title="Discard" class="fas fa-trash" @click="deleteNote"></i>
                         <i title="Save" class="fas fa-check" @click="addNote"></i>
-                    </div>
-                    <div class="img-container">
-                        <i title="Discard" class="far fa-trash-alt" @click="deleteImg"></i>
-                        <img v-if="note.img" :src="note.img" ref="noteImgContent" class="note-img"/>
                     </div>
                     <todos-list v-if="note.isTodo" :note="note"></todos-list>
                 </div>

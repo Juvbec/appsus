@@ -1,5 +1,6 @@
-import notesService from '../../services/miss-keep/notes-service.js';
+import noteService from '../../services/miss-keep/notes-service.js';
 import eventBus , {NOTES_CHANGE , COLOR_CHANGE} from '../../services/event-bus.service.js';
+import todosListCmp from './todos-list.cmp.js';
 
 export default {
     props: ['note'],
@@ -14,6 +15,9 @@ export default {
                 <i title="Contains Image" v-if="note.img" class="far fa-image"></i>
                 <pre>{{note.content}}</pre>
                 <img ref="contentImg" src=""/>
+                <div v-if="note.todos.length" class="noteTodos">
+                    <li v-for="todo in note.todos" :class="{ 'todo-completed': todo.completed }">{{todo.title}}</li>
+                </div>
             </div>
         </section>
     `,
@@ -26,7 +30,7 @@ export default {
     methods: {
         pinNote() {
             this.note.isPinned = !this.note.isPinned;
-            notesService.saveNote(this.note).then(res => {
+            noteService.saveNote(this.note).then(res => {
                 eventBus.$emit(NOTES_CHANGE);
             });
         },
@@ -39,5 +43,8 @@ export default {
             } 
             this.$refs['noteContent'].style.backgroundColor = this.note.bgColor.contentColor;
         }
+    },
+    computed: {
+
     }
 }
