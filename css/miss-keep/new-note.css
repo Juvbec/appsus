@@ -166,10 +166,10 @@
 
 }
 .bounce-leave-active {
-    animation-duration: .7s;
+    animation-duration: .3s;
 }
 .bounce-leave-active .new-note-modal {
-    animation: bounce-in .7s reverse;
+    animation: bounce-in .3s reverse;
 }
 @keyframes bounce-in {
     0% {
