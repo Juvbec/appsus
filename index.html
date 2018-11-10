@@ -16,23 +16,17 @@
     
     <div id="app">
         <header class="app-header" @click="goHome">
-            <!-- TODO: implement go home -->
-            <!-- <img class="logo" src="img/mr-meeseeks.png" alt="Mr. Meeseeks!"> -->
             <h1>Zero Waste</h1>
-            <!-- <img class="logo" src="img/meeseeksfavicon.png" alt="Mr. Meeseeks!"> -->
         </header>
         <transition :name="transitionName" mode="out-in">
             <router-view></router-view>
         </transition>
     </div>
-    <!-- <script src="https://cdn.jsdelivr.net/lodash/4.3.0/lodash.min.js"></script>     -->
-    <!-- <script src="lib/long-press.min.js"></script> -->
-    <script src="lib/sweetalert.min.js"></script>
+
     <script src="lib/moment.js"></script>
     <script src="lib/vue.js"></script>
     <script src="lib/vue-router.js"></script>
     <script src="lib/hammer.min.js"></script>
-    <!-- <script src="lib/vue-touch.js"></script> -->
     <script type="module" src="js/main.js"></script>
 </body>
 </html>
