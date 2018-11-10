@@ -60,11 +60,6 @@ export default {
                     this.$refs.swipeDelete.style.opacity = 1;
                     this.isSwipedForDelete = true;
                 });
-                hammer.on('swipeleft', ev => {
-                    this.$refs.container.style.transform = 'translateX(-30%)';
-                    this.$refs.swipePin.style.opacity = 1;
-                    this.isSwipedForPin = true;
-                });
             },
         },
         mounted() {
