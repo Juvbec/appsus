@@ -1,5 +1,7 @@
 import emailFilter from '../mister-email/email-filter.cmp.js';
 import progressBar from './progress-bar.js'
+import emailService from '../../services/mister-email/email.sevice.js';
+import eventBus, { EMAIL_CHANGE } from '../../services/event-bus.service.js';
 
 export default {
     template: `
@@ -26,10 +28,19 @@ export default {
             progress: 0
         }
     },
+    created() {
+        this.updateProgressBarPrecentage();
+        eventBus.$on(EMAIL_CHANGE);
+    },
     methods: {
         composeEmail() {
             this.$router.push('/misteremail/compose');            
         },
+        updateProgressBarPrecentage() {
+            emailService.getProgressBarPrecentage().then(obj => {
+                this.progress = (obj.readEmails / obj.allEmails) * 100;
+            })
+        }
     },
     components: {
         emailFilter,
