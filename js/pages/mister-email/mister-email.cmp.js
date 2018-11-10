@@ -22,7 +22,8 @@ export default {
     },
     computed: {
         isInCompose() {
-            return !this.$route.path.includes('compose');
+            return !(this.$route.path.includes('compose')
+                    ||!!this.$route.params.emailId);
         }
     },
     components: {
