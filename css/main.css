@@ -7,10 +7,12 @@
 @import './miss-keep/todos-list.css';
 @import './miss-keep/note-menu.css';
 
+
 @import './mister-email/mister-email.css';
 @import './mister-email/email-filter.css';
-@import './helpers.css';
 
+@import './helpers.css';
+@import './animations.css';
 
 /* ROOT */
 :root {
