@@ -11,7 +11,7 @@ export default {
                 <h5 v-else>from {{email.sender}}</h5>
             </div>
             <diV class="flex space-between">
-                <h6>{{createdAt}}</h6>
+                <h6 class="preview-time">{{createdAt}}</h6>
                 <i title="Discard" class="email-btn fas fa-trash" @click.stop="$emit('rm')"></i>
             </diV>
         </section>
