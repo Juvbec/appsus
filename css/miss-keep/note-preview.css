@@ -17,14 +17,9 @@
 }
 
 .note-preview-container {
-    /* max-height: 150px; */
-    /* height: fit-content; */
-    /* min-height: 50px; */
-    /* align-self: stretch; */
     justify-content: stretch;
     display: flex;
     flex-direction: column;
-    /* width: 150px; */
     transition: .3s;
     margin: 0 10px 10px;
     position: relative;
@@ -55,9 +50,6 @@
     cursor: pointer;
 }
 
-/* .fa-thumbtack.pinned{
-    color: inherit;
-} */
 
 .fa-thumbtack:active {
     transform: scale(0.9);
@@ -82,7 +74,7 @@
     transition: .6s;
     color: white;
     background-color: rgb(236, 56, 56);
-    z-index: 10;
+    z-index: 1;
 }
 .swipe-delete>* {
     padding: 25px;
@@ -97,7 +89,7 @@
     transition: .6s;
     color: white;
     background-color: rgba(0, 0, 0, 0.6);
-    z-index: 10;
+    z-index: 1;
 }
 .swipe-pin>*{
     padding: 25px;
