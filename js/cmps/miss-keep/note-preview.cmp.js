@@ -63,8 +63,8 @@ export default {
         },
         deleteNote(note = this.note) {
             noteService.deleteNote(note.id).then(res => {
-                this.$refs.container.style.opacity = 0;
-                this.$refs.container.style.transform = 'translateX(100%)';
+                // this.$refs.container.style.opacity = 0;
+                // this.$refs.container.style.transform = 'translateX(100%)';
                 eventBus.$emit(NOTES_CHANGE);
             });
         },
