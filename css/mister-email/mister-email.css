@@ -70,6 +70,7 @@
 /* ============================= */
        /* email preview */
 .email-prev {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -89,7 +90,20 @@
   padding: 0px 10px;
   text-align: center;
 }
-
+.email-prev .swipe-delete {
+  position: absolute;
+  font-size: 1em;
+  left: -85px;
+  /* top: 20px; */
+  opacity: 0;
+  transition: .6s;
+  color: white;
+  background-color: rgb(236, 56, 56);
+  z-index: 10;
+}
+.email-prev .swipe-delete>* {
+  padding: 10px;
+}
 
 
 
