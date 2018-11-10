@@ -11,7 +11,8 @@ export default {
     saveEmail,
     deleteEmail,
     verifyEmailAddress,
-    getUnReadEmails
+    getUnReadEmails,
+    getProgressBarPrecentage,
 }
 
 function query(filter = null) {
@@ -21,15 +22,15 @@ function query(filter = null) {
                 emails = [];
                 storageService.store(STORAGE_KEY, emails);
             }
-            
+
             if (filter === null) return emails;
 
             else return emails.filter(email => {
                 return (
                     email.subject.toUpperCase().includes(filter.byTxt.toUpperCase())
-                    && (email.isRead === !!filter.isRead || filter.isRead==='all')  
+                    && (email.isRead === !!filter.isRead || filter.isRead === 'all')
                 );
-            }).sort((email1,email2)=>{
+            }).sort((email1, email2) => {
                 return (email1.createdAt > email2.createdAt) === filter.byNew;
             })
         })
@@ -82,6 +83,17 @@ function verifyEmailAddress(address) {
 function getUnReadEmails() {
     return storageService.load(STORAGE_KEY)
         .then(emails => {
-        return emails.filter(email => !email.isRead);
+            return emails.filter(email => !email.isRead);
+        });
+}
+
+function getProgressBarPrecentage() {
+    return getUnReadEmails().then(unReadEmails => {
+        return query().then(emails => {
+            return {
+                readEmails: emails.length - unReadEmails.length,
+                allEmails: emails.length,
+            }
+        });
     });
 }
