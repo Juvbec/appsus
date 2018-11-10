@@ -42,7 +42,7 @@ export default {
     },
     created() {
         eventBus.$on(EMAIL_CHANGE,this.updateUnRead);
-        this.updateUnRead()
+        this.updateUnRead();
     },
     methods: {
         updateUnRead() {
