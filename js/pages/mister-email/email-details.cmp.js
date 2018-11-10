@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         goBack() {
-            this.$router.go(-1);
+            this.$router.push('/misteremail');
         },
         loadEmail() {
             let emailId =  this.$route.params.emailId;

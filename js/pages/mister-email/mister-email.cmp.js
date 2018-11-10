@@ -7,8 +7,9 @@ export default {
         <email-nav></email-nav>
         <email-list></email-list>
         </section>
-
-        <router-view></router-view>
+        <transition name="slideoutin" mode="out-in">
+            <router-view></router-view>
+        </transition>
         <button class="compose-btn" @click="composeEmail">+</button>
     </section>
     `,

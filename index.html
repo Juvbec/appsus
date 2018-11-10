@@ -21,8 +21,9 @@
             <h1>Zero Waste</h1>
             <!-- <img class="logo" src="img/meeseeksfavicon.png" alt="Mr. Meeseeks!"> -->
         </header>
-
-        <router-view></router-view>
+        <transition :name="transitionName" mode="out-in">
+            <router-view></router-view>
+        </transition>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/lodash/4.3.0/lodash.min.js"></script>     -->
     <!-- <script src="lib/long-press.min.js"></script> -->

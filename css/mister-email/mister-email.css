@@ -64,8 +64,8 @@
   width: 100%;
   min-height: 30px;
   border-bottom: 1px solid lightgray;
-  border-left: 1px solid lightgray;
-  border-right: 1px solid lightgray;
+  /* border-left: 1px solid lightgray; */
+  /* border-right: 1px solid lightgray; */
   padding: 5px 8px 5px 10px;
   cursor: pointer;
 }
@@ -85,17 +85,7 @@
   color: black;
   cursor: pointer;
 }
-/* transition for the email preview */
-  .fade-move, .fade-enter-active, .fade-leave-active {
-    transition: all .5s cubic-bezier(.55,0,.1,1);
-  }
-  .fade-enter, .fade-leave-to {
-    opacity: 0;
-    transform: scaleY(0.01) translate(30px, 0);
-  }
-  .fade-leave-active {
-    position: absolute;
-  }
+
 
 
 
