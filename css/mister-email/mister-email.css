@@ -44,7 +44,7 @@
 .progress {
   position: absolute;
   height: inherit;
-  background-color: black;
+  background-color: #4FB346;
 }
 .email-list-nav button:hover {
   background-color: rgb(56, 139, 187);
