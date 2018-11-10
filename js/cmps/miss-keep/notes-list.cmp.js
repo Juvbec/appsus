@@ -45,9 +45,7 @@ export default {
         eventBus.$on('filtered' , filter => {
             this.setFilter(filter);
         });
-        window.ontouchstart = () => {
-            eventBus.$emit(NOTE_TO_PLACE);
-        };
+        
 
     },
     destroyed() {

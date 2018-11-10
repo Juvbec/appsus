@@ -4,8 +4,6 @@ export default {
     template: `
     <section class="email-list-nav">
         <nav>
-            <i class="email-btn fas fa-trash"></i>
-            <!-- <button class="email-nav-btn">delete</button> -->
             <button class="email-nav-btn" @click="composeEmail">compose</button>
         </nav>
         <email-filter></email-filter>

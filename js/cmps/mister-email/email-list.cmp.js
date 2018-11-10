@@ -1,6 +1,6 @@
 import emailPreview from '../../pages/mister-email/email-preview.cmp.js';
 import emailService from '../../services/mister-email/email.sevice.js';
-import eventBus, {EMAIL_CHANGE, CHANGE_EMAIL_FILTER, UPDATE_EMAIL} from '../../services/event-bus.service.js';
+import eventBus, {EMAIL_CHANGE, CHANGE_EMAIL_FILTER, UPDATE_EMAIL, EMAIL_TO_PLACE} from '../../services/event-bus.service.js';
 
 // import scrollBar from '../temp/vue-scrollbar.vue'
 
@@ -48,7 +48,13 @@ export default {
             this.filter.isRead = filter;
             this.getEmails();
         } )
-        
+        window.ontouchstart = () => {
+            eventBus.$emit(EMAIL_TO_PLACE);
+        };
+    },
+    destroyed() {
+        window.ontouchstart = () => {
+        };
     },
     components: {
         emailPreview

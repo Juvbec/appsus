@@ -29,12 +29,13 @@
   align-items: stretch;
   min-height: 30px;
 }
-.email-list-nav button {
+.email-nav-btn {
   flex-grow: 1;
   background: none;
   border: none;
   padding: 10px;
 }
+
 .email-list-nav button:hover {
   background-color: rgb(56, 139, 187);
 }
@@ -75,8 +76,6 @@
   width: 100%;
   min-height: 30px;
   border-bottom: 1px solid lightgray;
-  /* border-left: 1px solid lightgray; */
-  /* border-right: 1px solid lightgray; */
   padding: 5px 8px 5px 10px;
   cursor: pointer;
 }
@@ -88,6 +87,7 @@
 }
 .preview-time {
   padding: 0px 10px;
+  text-align: center;
 }
 
 
@@ -109,6 +109,9 @@
 @media (max-width: 650px) {
   .email-home {
    display: none; 
+  }
+  .email-list-nav nav {
+    display: none;
   }
   .compose-email, .email-details {
     position: absolute;
