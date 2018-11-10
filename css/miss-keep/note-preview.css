@@ -76,25 +76,38 @@
 .swipe-delete {
     position: absolute;
     font-size: 3em;
-    left: -50px;
-    top: 20px;
+    left: -85px;
+    /* top: 20px; */
     opacity: 0;
     transition: .6s;
-    color: black;
+    color: white;
+    background-color: rgb(236, 56, 56);
     z-index: 10;
+}
+.swipe-delete>* {
+    padding: 25px;
 }
 
 .swipe-pin {
     position: absolute;
     font-size: 3em;
-    right: -50px;
-    top: 20px;
+    right: -80px;
+    /* top: 20px; */
     opacity: 0;
     transition: .6s;
-    color: black;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 10;
 }
-
+.swipe-pin>*{
+    padding: 25px;
+}
 .swipe-pin .fa-thumbtack {
-    opacity: .5;
+    color: white;
+    opacity: 1;
+}
+
+.swipe-pin .fa-thumbtack.pinned {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
 }

@@ -62,7 +62,8 @@ export default {
             } 
             this.$refs['noteContent'].style.backgroundColor = this.note.bgColor.contentColor;
         },
-        deleteNote(note = this.note) {
+        deleteNote(ev,note = this.note) {
+            // console.log(note)
             noteService.deleteNote(note.id).then(res => {
                 eventBus.$emit(NOTES_CHANGE);
             });
@@ -81,7 +82,6 @@ export default {
                 // console.log(ev)
                 this.$refs.container.style.transform = 'translateX(30%)'
                 this.$refs.swipeDelete.style.opacity = 1;
-                this.$refs.swipeDelete.style.color = 'red';
                 this.isSwipedForDelete = true;
             });
             hammer.on('swipeleft', ev => {
