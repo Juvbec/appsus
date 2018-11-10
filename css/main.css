@@ -64,6 +64,9 @@ header.app-header {
     justify-content: center;
     align-items: center; 
 }
+header.app-header:hover {
+    cursor: pointer;
+}
 
 #app {
     display: flex;
@@ -121,6 +124,7 @@ header.app-header {
 }
 .home-page-link:hover {
     transform: scale(1.2);
+    cursor: pointer;
 }
 .home-to-email {
     background-image: url(../img/green-email.png);

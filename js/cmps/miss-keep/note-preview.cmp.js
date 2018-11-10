@@ -7,12 +7,12 @@ export default {
     props: ['note'],
     template: `
         <section ref="container" class="note-preview-container">
-            <div v-show="isSwipedForDelete" ref="swipeDelete" class="swipe-delete">
-                <i title="Discard" class="far fa-trash-alt" @click.stop="deleteNote"></i>
+            <div ref="swipeDelete" class="swipe-delete">
+                <i v-if="isSwipedForDelete" title="Discard" class="far fa-trash-alt" @touchstart.stop="deleteNote"></i>
             </div>
-            <div v-show="isSwipedForPin" ref="swipePin" class="swipe-pin" @click.stop="pinNote">
-                <i v-if="note.isPinned" class="fas fa-thumbtack pinned"></i>
-                <i v-else="" class="fas fa-thumbtack"></i>
+            <div ref="swipePin" class="swipe-pin" @touchstart.stop="pinNote">
+                <i v-if="showPin" class="fas fa-thumbtack pinned"></i>
+                <i v-else-if="isSwipedForPin" class="fas fa-thumbtack"></i>
             </div>
             <div class="note-preview-title" ref="noteTitle">
                 <span class="note-title">{{note.title}}</span>
@@ -69,11 +69,11 @@ export default {
             });
         },
         containerBackToPlace() {
-            this.isSwipedForDelete = false;
-            this.isSwipedForPin = false;
             this.$refs.container.style.transform = 'translateX(0)';
             this.$refs.swipeDelete.style.opacity = 0;
             this.$refs.swipePin.style.opacity = 0;
+            this.isSwipedForDelete = false;
+            this.isSwipedForPin = false;
         },
         enableSwipeActions() {
             var hammer = new Hammer(this.$refs.container);
@@ -93,7 +93,9 @@ export default {
 
     },
     computed: {
-            
+        showPin() {
+            return this.isSwipedForPin && this.note.isPinned;
+        }
     },
     components: {
         noteMenu,
