@@ -42,7 +42,7 @@ export default {
     },
     mounted() {
         this.setStyle();
-        window.onclick = () => {
+        window.ontouchstart = () => {
             // console.log('close menu')
             // this.isFloatingMenu = false;
             // this.swipedForDelete = false;
