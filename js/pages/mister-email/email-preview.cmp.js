@@ -52,9 +52,23 @@ export default {
                 this.$refs.swipeDelete.style.opacity = 0;
                 this.isSwipedForDelete = false;
             },
+            enableSwipeActions() {
+                var hammer = new Hammer(this.$refs.container);
+                hammer.on('swiperight', ev => {
+                    // console.log(ev)
+                    this.$refs.container.style.transform = 'translateX(30%)'
+                    this.$refs.swipeDelete.style.opacity = 1;
+                    this.isSwipedForDelete = true;
+                });
+                hammer.on('swipeleft', ev => {
+                    this.$refs.container.style.transform = 'translateX(-30%)';
+                    this.$refs.swipePin.style.opacity = 1;
+                    this.isSwipedForPin = true;
+                });
+            },
         },
         mounted() {
             eventBus.$on(EMAIL_TO_PLACE, this.containerBackToPlace);
-        if (window.outerWidth < 468) this.enableSwipeActions();
+            if (window.outerWidth < 468) this.enableSwipeActions();
         }
 }
