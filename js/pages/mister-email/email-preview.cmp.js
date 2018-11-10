@@ -5,10 +5,15 @@ export default {
     props: ['email'],
     template:`
         <section v-if="email" class="email-prev" :class="isReadClasses" @click="goToDetails">
-            <h3>{{email.subject}}</h3>
-            <h6 v-if="email.isMine">to {{email.recipient}}</h6>
-            <h6 v-else>from {{email.sender}}</h6>
-            <i title="Discard" class="email-btn fas fa-trash" @click.stop="$emit('rm')"></i>
+            <div>
+                <h3>{{email.subject}}</h3>
+                <h5 v-if="email.isMine">to {{email.recipient}}</h5>
+                <h5 v-else>from {{email.sender}}</h5>
+            </div>
+            <diV class="flex space-between">
+                <h6>{{createdAt}}</h6>
+                <i title="Discard" class="email-btn fas fa-trash" @click.stop="$emit('rm')"></i>
+            </diV>
         </section>
         `,
         computed: {
@@ -16,6 +21,9 @@ export default {
                 return {
                     notread: !this.email.isRead
                 }
+            },
+            createdAt() {
+                return moment(this.email.createdAt).format('MMMM Do YYYY, h:mm');
             }
         },
         methods: {

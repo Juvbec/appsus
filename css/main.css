@@ -56,17 +56,11 @@ button:focus {
 
 header.app-header {
     height: 100px;
-    background-color: var(--main);
+    background-color: #4FB346;
     text-align: center;
-    /* display: flex;
-    justify-content: space-around;
-    align-items: center; */
-}
-footer.app-footer {
- height: 50px;
- background-color: var(--main);
-    text-align: center;
-    color: var(--secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center; 
 }
 
 #app {
@@ -88,23 +82,55 @@ footer.app-footer {
 
 /* HOME PAGE */
 .home-page {
-    /* background-image:  */
-    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    background-image: url(../img/mainbackground.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: bottom;   
+    background-color: skyblue;
+}
+.home-paragraph {
+    flex-grow: 1;
+    text-align: center;
+}
+.home-links {
     display: flex;
     justify-content: space-around;
-    align-items: stretch;
-    /* align-items: center; */
+    align-items: center;
+    flex-grow: 2;
 }
-
 .home-page-link {
-    background-color: var(--secondary);
-    width: 30%;
-    margin: 100px 0;
-    padding: 20px;
-    border-radius: 10%;
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    transition: transform 0.3s;
+}
+.home-page-link:hover {
+    transform: scale(1.2);
+}
+.home-to-email {
+    background-image: url(../img/green-email.png);
+}
+.home-to-notes {
+    background-image: url(../img/green-note.png);
+    padding: 10px;
 }
 
-
+@media (max-width: 460px) {
+    .home-page {
+        flex-direction: column-reverse;
+    }
+    .home-links {
+        flex-direction: column;
+    }
+    .home-paragraph {
+        color: white;
+    }
+}
 
 
 
