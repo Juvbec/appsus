@@ -6,7 +6,7 @@ import eventBus , { NOTE_TO_PLACE } from '../services/event-bus.service.js';
 
 export default {
     template: `
-    <section class="page-content">
+    <section class="page-content miss-notes">
     <transition name="bounce">
         <new-note class="new-note-cmp" v-if="isNewNote" @addedNote="updateNotes" :currNote="currNote" @closeModal="newNote"></new-note>
     </transition>
