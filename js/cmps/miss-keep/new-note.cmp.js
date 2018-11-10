@@ -82,6 +82,7 @@ export default {
             // console.log(this.note.title.trim().length , this.note.content.trim().length)
             if (this.note.id) {
                 noteService.getById(this.note.id).then(note => {
+                    if(!note) return;
                     if (note.content === this.note.content && note.title === this.note.title && 
                         note.img === this.note.img && note.todos === this.note.todos)
                             this.$emit('closeModal');

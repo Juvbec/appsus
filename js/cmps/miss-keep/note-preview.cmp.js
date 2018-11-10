@@ -53,6 +53,7 @@ export default {
             });
         },
         setStyle() {
+            if (!this.$refs.container) return;
             this.$refs.noteTitle.style.backgroundColor = this.note.bgColor.titleColor;
             if (this.note.img) {
                 let img = this.$refs.contentImg;
@@ -63,12 +64,11 @@ export default {
         },
         deleteNote(note = this.note) {
             noteService.deleteNote(note.id).then(res => {
-                // this.$refs.container.style.opacity = 0;
-                // this.$refs.container.style.transform = 'translateX(100%)';
                 eventBus.$emit(NOTES_CHANGE);
             });
         },
         containerBackToPlace() {
+            if (!this.$refs.container) return;
             this.$refs.container.style.transform = 'translateX(0)';
             this.$refs.swipeDelete.style.opacity = 0;
             this.$refs.swipePin.style.opacity = 0;
@@ -85,9 +85,9 @@ export default {
                 this.isSwipedForDelete = true;
             });
             hammer.on('swipeleft', ev => {
-                this.isSwipedForPin = true;
                 this.$refs.container.style.transform = 'translateX(-30%)';
                 this.$refs.swipePin.style.opacity = 1;
+                this.isSwipedForPin = true;
             });
         },
 
