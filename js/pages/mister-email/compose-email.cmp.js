@@ -5,7 +5,7 @@ export default {
     template: `
         <section class="mister-email-content compose-email">
             <div class="compose-func flex space-between">
-                <button @click="goBack">X</button>
+                <button @click="goBack">Go Back</button>
                 <button @click="sendEmail">Send ></button>
             </div>
             <div class="label-holder">

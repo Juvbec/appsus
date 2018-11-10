@@ -10,12 +10,19 @@ export default {
         <transition name="slideoutin" mode="out-in">
             <router-view></router-view>
         </transition>
-        <button class="new-note-btn" @click="composeEmail">+</button>
+        <button class="new-note-btn"
+                @click="composeEmail"
+                v-if="isInCompose">+</button>
     </section>
     `,
     methods: {
         composeEmail() {
             this.$router.push('/misteremail/compose');            
+        }
+    },
+    computed: {
+        isInCompose() {
+            return !this.$route.path.includes('compose');
         }
     },
     components: {
