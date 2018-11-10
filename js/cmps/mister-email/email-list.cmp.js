@@ -40,14 +40,14 @@ export default {
     created() {
         this.getEmails();
         eventBus.$on(EMAIL_CHANGE, this.getEmails);
-        eventBus.$on(CHANGE_EMAIL_FILTER,filter => {
-            this.filter = filter;
-            this.getEmails();
-        })
-        eventBus.$on(UPDATE_EMAIL, (email=>{
+        eventBus.$on(UPDATE_EMAIL, email=>{
             emailService.saveEmail(email)
-            .then(this.getEmails)
-        }))
+            .then(this.getEmails);
+        })
+        eventBus.$on(CHANGE_EMAIL_FILTER,filter=> {
+            this.filter.isRead = filter;
+            this.getEmails();
+        } )
         
     },
     components: {

@@ -25,6 +25,7 @@
 }
 .email-list-nav nav {
   display: flex;
+  align-items: center;
   min-height: 30px;
 }
 .email-list-nav button {
@@ -40,6 +41,15 @@
   width: 100%;
   flex-grow: 1;
   padding: 5px;
+}
+.email-btn.fa-trash {
+  color: rgb(56, 139, 187);
+  padding: 15px;
+}
+.email-btn.fa-trash:hover{
+  color: lightblue;
+  background-color: rgb(56, 139, 187);
+  cursor: pointer;
 }
 
 /* ============================= */
@@ -78,13 +88,7 @@
 .preview-time {
   padding: 0px 10px;
 }
-.email-btn.fa-trash {
-  color: red;
-}
-.email-btn.fa-trash:hover{
-  color: black;
-  cursor: pointer;
-}
+
 
 
 
