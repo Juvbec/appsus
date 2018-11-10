@@ -2,6 +2,7 @@
 .mister-email {
   display:flex;
   max-height: 100%;
+  position: relative;
 }
 
 /* =================================================== */
@@ -109,8 +110,13 @@
   .email-home {
    display: none; 
   }
+  .compose-email, .email-details {
+    position: absolute;
+    background: white;
+    width: 95%;
+    height: 97%;
+  }
 }
-
 /* doesnt have css. if it's needed please insert here */
 
 
