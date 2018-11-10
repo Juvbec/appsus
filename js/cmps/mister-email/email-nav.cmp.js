@@ -1,8 +1,10 @@
 import emailFilter from '../mister-email/email-filter.cmp.js';
+import progressBar from './progress-bar.js'
 
 export default {
     template: `
     <section class="email-list-nav">
+        <progress-bar :progress="progress"></progress-bar>
         <nav>
             <button class="email-nav-btn" @click="composeEmail">compose</button>
         </nav>
@@ -20,7 +22,8 @@ export default {
                 byTxt: '',
                 byNew: true,
                 isRead: 'all',
-            }
+            },
+            progress: 0
         }
     },
     methods: {
@@ -30,5 +33,6 @@ export default {
     },
     components: {
         emailFilter,
+        progressBar
     }
 }
