@@ -55,8 +55,7 @@ export default {
             enableSwipeActions() {
                 var hammer = new Hammer(this.$refs.container);
                 hammer.on('swiperight', ev => {
-                    // console.log(ev)
-                    this.$refs.container.style.transform = 'translateX(30%)'
+                    this.$refs.container.style.transform = 'translateX(10%)'
                     this.$refs.swipeDelete.style.opacity = 1;
                     this.isSwipedForDelete = true;
                 });

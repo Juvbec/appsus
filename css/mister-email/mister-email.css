@@ -79,6 +79,7 @@
   border-bottom: 1px solid lightgray;
   padding: 5px 8px 5px 10px;
   cursor: pointer;
+  transition: .3s;
 }
 .email-prev.notread {
   background-color: rgba(107, 186, 238, 0.349);
@@ -93,16 +94,16 @@
 .email-prev .swipe-delete {
   position: absolute;
   font-size: 1em;
-  left: -85px;
+  left: -35px;
   /* top: 20px; */
   opacity: 0;
   transition: .6s;
   color: white;
   background-color: rgb(236, 56, 56);
-  z-index: 10;
+  opacity: 0.7;
 }
 .email-prev .swipe-delete>* {
-  padding: 10px;
+  padding: 13px;
 }
 
 
