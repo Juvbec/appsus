@@ -6,7 +6,9 @@ export default {
     props: [],
     template: `
         <section class="notes-list-container">
-            <note-preview v-for="(note, idx) in notes" @click.native="$emit('editNote', note)" :key="note.id" :note="note"></note-preview>
+            <transition-group name="fade">
+                <note-preview v-for="(note, idx) in notes" @click.native="$emit('editNote', note)" :key="note.id" :note="note"></note-preview>
+            </transition-group>
         </section>
     `,
     data() {
