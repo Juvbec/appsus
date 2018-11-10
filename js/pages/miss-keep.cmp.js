@@ -2,6 +2,7 @@ import notesList from '../cmps/miss-keep/notes-list.cmp.js';
 import noteService from '../services/miss-keep/notes-service.js';
 import newNote from '../cmps/miss-keep/new-note.cmp.js';
 import notesFilter from '../cmps/miss-keep/notes-filter.cmp.js';
+import eventBus , { NOTE_TO_PLACE } from '../services/event-bus.service.js';
 
 export default {
     template: `
@@ -27,6 +28,9 @@ export default {
     },
     created() {
         this.updateNotes();
+        window.ontouchstart = () => {
+            eventBus.$emit(NOTE_TO_PLACE);
+        };
     },
     methods: {
         newNote() {
