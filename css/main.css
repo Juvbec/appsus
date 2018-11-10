@@ -23,11 +23,11 @@
 }
 @font-face {
     font-family: lato;
-    src: url(/fonts/Lato-Regular.ttf);
+    src: url(./fonts/Lato-Regular.ttf);
 }
 @font-face {
     font-family: lato-bold;
-    src: url(/fonts/Lato-Bold.ttf);
+    src: url(./fonts/Lato-Bold.ttf);
 }
 html,body, #app {
     height: 100%;
