@@ -1,9 +1,15 @@
 
 
 export default {
+    props: ['progress'],
     template:` 
-        <div>
-            <div></div>
-        </div>
-    `
+        <section class="progress-bar">
+            <div></div class="progerss" :style="{width: progressUnits}">
+        </section>
+    `,
+    computed: {
+        progressUnits() {
+            return this.progress + '%'
+        }
+    }
 }
