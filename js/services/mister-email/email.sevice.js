@@ -10,7 +10,8 @@ export default {
     addEmail,
     saveEmail,
     deleteEmail,
-    verifyEmailAddress
+    verifyEmailAddress,
+    getUnReadEmails
 }
 
 function query(filter = null) {
@@ -38,7 +39,7 @@ function getById(emailId) {
     return storageService.load(STORAGE_KEY)
         .then(emails => {
             return emails.find(email => email.id === emailId);
-        })
+        });
 }
 
 function addEmail(newEmail) {
@@ -69,7 +70,7 @@ function deleteEmail(emailId) {
             emails.splice(emailIdx, 1);
             storageService.store(STORAGE_KEY, emails);
             return Promise.resolve(emails);
-        })
+        });
 }
 
 function verifyEmailAddress(address) {
@@ -78,3 +79,9 @@ function verifyEmailAddress(address) {
     return emailRE.test(address);
 }
 
+function getUnReadEmails() {
+    return storageService.load(STORAGE_KEY)
+        .then(emails => {
+        return emails.filter(email => !email.isRead);
+    });
+}

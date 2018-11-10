@@ -1,5 +1,5 @@
 import eventBus, {CHANGE_EMAIL_FILTER} from '../../services/event-bus.service.js';
-
+import emailService from '../../services/mister-email/email.sevice.js';
 export default {
     template: `
     <section class="emails-filter">
@@ -28,15 +28,19 @@ export default {
                        type="radio" 
                        id="unreadRadio" 
                        value="">
-                <span>UnRead</span>
+                <span>UnRead ({{unReadCounter}})</span>
             </label>
         </div>
     </section>
     `,
     data() {
         return {
-            filter: 'all'
+            filter: 'all',
+            unReadCounter: '',
         }
+    },
+    created() {
+        emailService.getUnReadEmails().then(emails => this.unReadCounter = emails.length);
     },
     computed: {
         allClass() {
@@ -53,7 +57,7 @@ export default {
             return {
                 radioactive: this.filter === ''
             }
-        }
+        },
     },
     watch: {
         filter() {            

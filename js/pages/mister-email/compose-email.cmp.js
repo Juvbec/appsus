@@ -61,6 +61,7 @@ export default {
     methods: {
         sendEmail() {
             if (!this.checkValidity) return;
+            if (this.email.subject.trim() === '') this.email.subject = 'no-subject';
             this.email.cc = this.ccs;
             this.email.isRead = false;
             this.email.createdAt = Date.now();
