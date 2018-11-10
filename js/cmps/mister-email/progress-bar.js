@@ -4,7 +4,7 @@ export default {
     props: ['progress'],
     template:` 
         <section class="progress-bar">
-            <div></div class="progerss" :style="{width: progressUnits}">
+            <div class="progress" :style="{width: progressUnits}"></div>
         </section>
     `,
     computed: {
