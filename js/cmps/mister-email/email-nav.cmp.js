@@ -23,7 +23,7 @@ export default {
                 byNew: true,
                 isRead: 'all',
             },
-            progress: 0
+            progress: 100
         }
     },
     methods: {
