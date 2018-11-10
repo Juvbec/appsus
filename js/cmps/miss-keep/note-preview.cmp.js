@@ -7,11 +7,15 @@ export default {
     props: ['note'],
     template: `
         <section ref="container" class="note-preview-container" 
-            @contextmenu.prevent="" @long-press="isFloatingMenu = true">
+            @contextmenu.prevent="">
             <div ref="swipeDelete" class="swipe-delete">
                 <i v-show="swipedForDelete" title="Discard" class="far fa-trash-alt" @click.stop="deleteNote"></i>
             </div>
-            <note-menu ref="noteMenu" v-show="openFloatingMenu" :note="note"></note-menu>
+            <div ref="swipePin" class="swipe-pin" @click.stop="pinNote">
+                <i v-if="note.isPinned" class="fas fa-thumbtack pinned"></i>
+                <i v-else="" class="fas fa-thumbtack"></i>
+            </div>
+            <!-- <note-menu ref="noteMenu" v-show="openFloatingMenu" :note="note"></note-menu> -->
             <div class="note-preview-title" ref="noteTitle">
                 <span class="note-title">{{note.title}}</span>
                 <i @click.stop="pinNote" v-if="note.isPinned" class="fas fa-thumbtack pinned"></i>
@@ -39,31 +43,33 @@ export default {
     mounted() {
         this.setStyle();
         window.ontouchstart = () => {
-            console.log('close menu')
-            this.isFloatingMenu = false;
-            this.swipedForDelete = false;
-            this.$refs.swipeDelete.style.opacity = 0;
+            // console.log('close menu')
+            // this.isFloatingMenu = false;
+            // this.swipedForDelete = false;
             this.$refs.container.style.transform = 'translateX(0)';
+            this.$refs.swipeDelete.style.opacity = 0;
+            this.$refs.swipePin.style.opacity = 0;
 
         }
         if (window.outerWidth < 468) {
-            var hammertime = new Hammer(this.$refs.container);
-            hammertime.on('swiperight', ev => {
-                console.log(ev)
+            var hammer = new Hammer(this.$refs.container);
+            hammer.on('swiperight', ev => {
+                // console.log(ev)
                 this.$refs.container.style.transform = 'translateX(30%)'
                 this.$refs.swipeDelete.style.opacity = 1;
                 this.$refs.swipeDelete.style.color = 'red';
                 this.swipedForDelete = true;
-                setTimeout(() => {
-                    this.deleteNote(this.note);
-                },300);
+                // setTimeout(() => {
+                //     this.deleteNote(this.note);
+                // },300);
+            });
+            hammer.on('swipeleft', ev => {
+                this.$refs.container.style.transform = 'translateX(-30%)';
+                this.$refs.swipePin.style.opacity = 1;
             });
         }
     },
     methods: {
-        test() {
-            console.log('swiped left')
-        },
         pinNote() {
             this.note.isPinned = !this.note.isPinned;
             noteService.saveNote(this.note).then(res => {
@@ -79,7 +85,7 @@ export default {
             } 
             this.$refs['noteContent'].style.backgroundColor = this.note.bgColor.contentColor;
         },
-        deleteNote(note) {
+        deleteNote(note = this.note) {
             if (!confirm('Delete note?')) {
                 this.swipedForDelete = false;
                 this.$refs.swipeDelete.style.opacity = 0;
