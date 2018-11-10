@@ -144,6 +144,10 @@ header.app-header:hover {
     .home-paragraph {
         color: white;
     }
+    header.app-header {
+        height: 50px;
+    }
+    
 }
 
 
