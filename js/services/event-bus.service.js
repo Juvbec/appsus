@@ -7,6 +7,7 @@ export const DETAILED_VIEW = 'on-preview-clicked';
 export const UPDATE_EMAIL = 'update-email';
 export const SAVE_NOTE = 'save-note'
 export const DELETE_NOTE = 'delete-note';
+export const NOTE_TO_PLACE = 'note-to-place';
 
 var bus = new Vue();
 

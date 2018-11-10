@@ -7,7 +7,7 @@ export default {
     template: `
         <section class="notes-list-container">
             <transition-group name="fade">
-                <note-preview v-for="(note, idx) in notes" @click.native="$emit('editNote', note)" :key="note.id" :note="note"></note-preview>
+                <note-preview v-if="notes" v-for="(note, idx) in notes" @click.native="$emit('editNote', note)" :key="note.id" :note="note"></note-preview>
             </transition-group>
         </section>
     `,

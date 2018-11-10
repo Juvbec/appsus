@@ -90,13 +90,14 @@ export default {
                     eventBus.$emit(NOTES_CHANGE);
                 });
             } else if (this.note.title.trim().length || this.note.content.trim().length || this.note.img || this.note.todos.length) {
-                if (confirm('Discard changes?')) {
+                if (!confirm('Discard changes?')) {
                     return;
                 }
                 else this.$emit('closeModal');
                 if (!this.note.todos.length) this.note.isTodo = false;
                 eventBus.$emit(NOTES_CHANGE);
-            } 
+            } else this.$emit('closeModal');
+
         },
         deleteNote(ev , note = this.note) {
             if (note.title.trim().length || note.content.trim().length || note.img || note.todos.length) {
