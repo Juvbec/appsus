@@ -26,7 +26,7 @@ function query(filter = null) {
             else return emails.filter(email => {
                 return (
                     email.subject.toUpperCase().includes(filter.byTxt.toUpperCase())
-                    && (email.isRead === filter.isRead || filter.isRead==='all')  
+                    && (email.isRead === !!filter.isRead || filter.isRead==='all')  
                 );
             }).sort((email1,email2)=>{
                 return (email1.createdAt > email2.createdAt) === filter.byNew;

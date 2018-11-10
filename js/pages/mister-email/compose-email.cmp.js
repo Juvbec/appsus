@@ -82,7 +82,8 @@ export default {
                 `
                 
 
-> On ${moment(email.createdAt)} ${email.sender} sent: 
+> On ${moment(email.createdAt).format(' DD.MM.YYYY, h:mm a')} 
+ ${email.sender} sent: 
     "
     ${email.message}
     "

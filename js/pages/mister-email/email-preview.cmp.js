@@ -12,7 +12,7 @@ export default {
             </div>
             <diV class="flex space-between">
                 <h6 class="preview-time">{{createdAt}}</h6>
-                <i title="Discard" class="email-btn fas fa-trash" @click.stop="$emit('rm')"></i>
+                <!-- <i title="Discard" class="email-btn fas fa-trash" @click.stop="$emit('rm')"></i> -->
             </diV>
         </section>
         `,

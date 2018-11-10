@@ -10,7 +10,7 @@ export default {
         <transition name="slideoutin" mode="out-in">
             <router-view></router-view>
         </transition>
-        <button class="compose-btn" @click="composeEmail">+</button>
+        <button class="new-note-btn" @click="composeEmail">+</button>
     </section>
     `,
     methods: {
