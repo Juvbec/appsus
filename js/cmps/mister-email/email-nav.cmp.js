@@ -30,7 +30,7 @@ export default {
     },
     created() {
         this.updateProgressBarPrecentage();
-        eventBus.$on(EMAIL_CHANGE);
+        eventBus.$on(EMAIL_CHANGE , this.updateProgressBarPrecentage);
     },
     methods: {
         composeEmail() {
