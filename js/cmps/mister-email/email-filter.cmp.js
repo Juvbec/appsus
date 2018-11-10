@@ -56,9 +56,7 @@ export default {
         }
     },
     watch: {
-        filter() {
-            console.log(this.filter);
-            
+        filter() {            
             eventBus.$emit(CHANGE_EMAIL_FILTER, this.filter)
         }
     }

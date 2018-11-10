@@ -25,7 +25,7 @@
 }
 .email-list-nav nav {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   min-height: 30px;
 }
 .email-list-nav button {
@@ -105,6 +105,12 @@
 }
 
 /* home */
+@media (max-width: 650px) {
+  .email-home {
+   display: none; 
+  }
+}
+
 /* doesnt have css. if it's needed please insert here */
 
 
@@ -183,6 +189,17 @@
   padding: 20px 20px 0;
   flex-grow: 1;
 }
+.details-container pre {
+  white-space: pre-wrap;
+}
+.details-container > *:not(pre) {
+  border-bottom: 1px solid lightgray;
+  padding: 8px 0;
+}
+
+
+
+
 
 @media (max-width: 650px) {
   .mister-email {
@@ -193,13 +210,17 @@
     max-height: 10%;
   }
 }
+@media (min-width: 650px) {
+  .mister-email .new-note-btn {
+    display: none;
+  }
+}
 
 
 
 
 
-
-/* compose email btn */
+/* compose email btn
 .compose-btn {
   position: absolute;
   bottom: 0;
@@ -218,7 +239,7 @@
 .compose-btn:hover {
 background-color: red;
 color: white;
-}
+} */
 
 
 
