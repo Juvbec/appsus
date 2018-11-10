@@ -1,5 +1,6 @@
 .floating-menu-container {
     position: absolute;
+    z-index: 1;
 }
 
 .floating-menu-container .bubble {
