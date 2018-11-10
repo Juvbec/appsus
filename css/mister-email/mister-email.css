@@ -64,8 +64,8 @@
   width: 100%;
   min-height: 30px;
   border-bottom: 1px solid lightgray;
-  border-left: 1px solid lightgray;
-  border-right: 1px solid lightgray;
+  /* border-left: 1px solid lightgray; */
+  /* border-right: 1px solid lightgray; */
   padding: 5px 8px 5px 10px;
   cursor: pointer;
 }
