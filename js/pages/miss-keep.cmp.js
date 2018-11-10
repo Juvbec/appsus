@@ -28,9 +28,7 @@ export default {
     },
     created() {
         this.updateNotes();
-        window.ontouchstart = () => {
-            eventBus.$emit(NOTE_TO_PLACE);
-        };
+
     },
     methods: {
         newNote() {
