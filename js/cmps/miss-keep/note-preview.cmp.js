@@ -42,7 +42,7 @@ export default {
     },
     mounted() {
         this.setStyle();
-        window.ontouchstart = () => {
+        window.onclick = () => {
             // console.log('close menu')
             // this.isFloatingMenu = false;
             // this.swipedForDelete = false;
@@ -73,6 +73,8 @@ export default {
         pinNote() {
             this.note.isPinned = !this.note.isPinned;
             noteService.saveNote(this.note).then(res => {
+                this.$refs.swipePin.style.opacity = 0;  
+                this.$refs.container.style.transform = 'translateX(0)';
                 eventBus.$emit(NOTES_CHANGE);
             });
         },
@@ -86,16 +88,11 @@ export default {
             this.$refs['noteContent'].style.backgroundColor = this.note.bgColor.contentColor;
         },
         deleteNote(note = this.note) {
-            if (!confirm('Delete note?')) {
-                this.swipedForDelete = false;
-                this.$refs.swipeDelete.style.opacity = 0;
-                this.$refs.container.style.transform = 'translateX(0)';
-                return;
-            } else {
-                noteService.deleteNote(note.id).then(res => {
-                    eventBus.$emit(NOTES_CHANGE);
-                });
-            }
+            noteService.deleteNote(note.id).then(res => {
+                this.$refs.container.style.opacity = 0;
+                this.$refs.container.style.transform = 'translateX(100%)';
+                eventBus.$emit(NOTES_CHANGE);
+            });
         }
 
     },
