@@ -9,7 +9,7 @@ export default {
             <div ref="swipeDelete" class="swipe-delete">
                 <i v-if="isSwipedForDelete" title="Discard" class="far fa-trash-alt" @touchstart.prevent.stop="deleteEmail"></i>
             </div>
-            <div>
+            <div class="preview-left">
                 <h3>{{email.subject}}</h3>
                 <h5 v-if="email.isMine">to {{email.recipient}}</h5>
                 <h5 v-else>from {{email.sender}}</h5>

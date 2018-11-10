@@ -81,6 +81,14 @@
   cursor: pointer;
   transition: .3s;
 }
+.preview-left {
+  max-width: 60%;
+}
+.preview-left h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .email-prev.notread {
   background-color: rgba(107, 186, 238, 0.349);
 }
