@@ -66,6 +66,8 @@ export default {
         this.loadEmail()
             .then(() => {
                 eventBus.$on(DETAILED_VIEW, this.loadEmail)
-            })
+                eventBus.$emit(EMAIL_CHANGE);
+            });
+        
     },
 } 

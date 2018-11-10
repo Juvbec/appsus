@@ -1,5 +1,6 @@
-import eventBus, {CHANGE_EMAIL_FILTER} from '../../services/event-bus.service.js';
+import eventBus, {CHANGE_EMAIL_FILTER, EMAIL_CHANGE} from '../../services/event-bus.service.js';
 import emailService from '../../services/mister-email/email.sevice.js';
+
 export default {
     template: `
     <section class="emails-filter">
@@ -36,11 +37,17 @@ export default {
     data() {
         return {
             filter: 'all',
-            unReadCounter: '',
+            unReadCounter: '0',
         }
     },
     created() {
-        emailService.getUnReadEmails().then(emails => this.unReadCounter = emails.length);
+        eventBus.$on(EMAIL_CHANGE,this.updateUnRead);
+        this.updateUnRead()
+    },
+    methods: {
+        updateUnRead() {
+            emailService.getUnReadEmails().then(emails => this.unReadCounter = emails.length);
+        }
     },
     computed: {
         allClass() {
