@@ -8,9 +8,9 @@ export default {
     template: `
         <section ref="container" class="note-preview-container">
             <div ref="swipeDelete" class="swipe-delete">
-                <i v-if="isSwipedForDelete" title="Discard" class="far fa-trash-alt" @touchstart.stop="deleteNote"></i>
+                <i v-if="isSwipedForDelete" title="Discard" class="far fa-trash-alt" @touchstart.prevent.stop="deleteNote"></i>
             </div>
-            <div ref="swipePin" class="swipe-pin" @touchstart.stop="pinNote">
+            <div ref="swipePin" class="swipe-pin" @touchstart.prevent.stop="pinNote">
                 <i v-if="showPin" class="fas fa-thumbtack pinned"></i>
                 <i v-else-if="isSwipedForPin" class="fas fa-thumbtack"></i>
             </div>
