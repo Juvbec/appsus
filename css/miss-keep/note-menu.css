@@ -1,11 +1,15 @@
 .floating-menu-container {
     position: absolute;
-    z-index: 1;
+    z-index: 1ּ;
+    top: -20px;
+    left: 35%;
+    display: flex;
+    justify-content: center;
 }
 
 .floating-menu-container .bubble {
-	position: absolute;
-	background: rgb(100, 100, 100);
+    /* position: absolute; */
+	background: rgba(100, 100, 100, 0.3);
     border-radius: 50%;
     bottom: -20px;
     left: -20px;
@@ -15,5 +19,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* opacity: 0; */
+    /* opacity: 0.3; */
+}
+
+.floating-menu-container .bubble .fa-thumbtack{
+    color: black;
+    opacity: 0.5;
 }
