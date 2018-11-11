@@ -14,6 +14,15 @@ new Vue({
     methods: {
         goHome() {
             this.$router.push('/');
+        },
+        openHamburgerMenu() {
+            this.$refs.hamburger.classList.toggle('open');
+        },
+        goToMissKeep() {
+            this.$router.push('/misskeep');
+        },
+        goToMisterEmail() {
+            this.$router.push('/misteremail');
         }
     },
     // beforeRouteUpdate(to, from, next) {

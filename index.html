@@ -16,6 +16,14 @@
     
     <div id="app">
         <header class="app-header" @click="goHome">
+            <button class="hamburger" ref="hamburger" @click.stop="openHamburgerMenu">☰</button>
+            <nav ref="hamburgerMenu" class="hamburger-menu">
+                <div></div>
+                <div></div>
+                <div @click="goHome">Home</div>
+                <div @click="goToMissKeep">Miss Keep</div>
+                <div @click="goToMisterEmail">Mister Email</div>
+            </nav>
             <h1>Zero Waste</h1>
         </header>
         <transition :name="transitionName" mode="out-in">
