@@ -11,6 +11,12 @@ new Vue({
     data: {
         transitionName: "slideright"
     },
+    mounted() {
+        window.onclick = () => {
+            if (this.$refs.hamburger.classList.contains('open'))
+                this.$refs.hamburger.classList.remove('open');
+        }
+    },
     methods: {
         goHome() {
             this.$router.push('/');
