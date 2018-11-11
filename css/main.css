@@ -104,6 +104,7 @@ header.app-header:hover {
 .home-paragraph {
     flex-grow: 1;
     text-align: center;
+    color: white;
 }
 .home-paragraph h2 {
     padding: 40px 0 15px;
