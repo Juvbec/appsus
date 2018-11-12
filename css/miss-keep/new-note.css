@@ -69,14 +69,16 @@
     position: relative;
     margin: 5px auto;
     width: 90%;
-    height: 1rem;
+    height: 2rem;
     display: flex;
     justify-content: space-around;
+    /* transform: scaleY(2); */
 }
 .fa-check , .fa-trash , .select-button, .fa-list-alt, .fa-palette {
     /* position: absolute; */
     /* right: 0;
     bottom: 0; */
+    font-size: 2rem;
     color: goldenrod;
 }
 .fa-list-alt.clicked {

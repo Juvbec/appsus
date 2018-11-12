@@ -11,9 +11,24 @@ new Vue({
     data: {
         transitionName: "slideright"
     },
+    mounted() {
+        window.onclick = () => {
+            if (this.$refs.hamburger.classList.contains('open'))
+                this.$refs.hamburger.classList.remove('open');
+        }
+    },
     methods: {
         goHome() {
             this.$router.push('/');
+        },
+        openHamburgerMenu() {
+            this.$refs.hamburger.classList.toggle('open');
+        },
+        goToMissKeep() {
+            this.$router.push('/misskeep');
+        },
+        goToMisterEmail() {
+            this.$router.push('/misteremail');
         }
     },
     // beforeRouteUpdate(to, from, next) {

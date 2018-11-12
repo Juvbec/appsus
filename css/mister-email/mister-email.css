@@ -46,6 +46,11 @@
   height: inherit;
   background-color: #4FB346;
   box-shadow: inset 0px 0px 100px -25px #e4ff37;
+<<<<<<< HEAD
+=======
+  text-align: center;
+  font-size: .6em;
+>>>>>>> f9997e9e21f7d42d60447e3baf481b9293695411
 }
 .email-list-nav button:hover {
   background-color: rgb(56, 139, 187);
