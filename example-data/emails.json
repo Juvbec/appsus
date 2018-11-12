@@ -1,0 +1,115 @@
+[
+    {
+        "recipient": "ime@amazin.com",
+        "cc": null,
+        "sender": "Myself@fake.com",
+        "subject": "amazin Membership",
+        "message": "Due to problems with your card, we have been unable to charge your account the money for your membership.\nYour membership has been canceled.",
+        "isMine": true,
+        "isRead": false,
+        "createdAt": 1542039969191,
+        "id": "TT6fD"
+    },
+    {
+        "recipient": "jonybar9@gmail.com",
+        "cc": null,
+        "sender": "Myself@fake.com",
+        "subject": "let's work on the project!",
+        "message": "hey!\nwe have to finish the project until November 12th.\nplease send me the dates we can schedule the meeting.",
+        "isMine": true,
+        "isRead": false,
+        "createdAt": 1542040092339,
+        "id": "Dnijy"
+    },
+    {
+        "recipient": "maor@gmail.com",
+        "cc": null,
+        "sender": "Myself@fake.com",
+        "subject": "Ski this weekend?",
+        "message": "There's a great deal for skiing this weekend,\nbut we need to order the tickets now.\nare you up for that?",
+        "isMine": true,
+        "isRead": true,
+        "createdAt": 1542040160955,
+        "id": "VCgIC"
+    },
+    {
+        "recipient": "maor@gmail.com",
+        "cc": null,
+        "sender": "Myself@fake.com",
+        "subject": "RE:Ski this weekend?",
+        "message": "Yes of course!!\nsend me the link right away\n                \n\n> On  12.11.2018, 6:29 pm \n Myself@fake.com sent: \n    \"\n    There's a great deal for skiing this weekend,\nbut we need to order the tickets now.\nare you up for that?\n    \"\n                ",
+        "isMine": true,
+        "isRead": false,
+        "createdAt": 1542040225326,
+        "id": "6ddLI"
+    },
+    {
+        "recipient": "yaron12@yahoo.com",
+        "cc": null,
+        "sender": "Myself@fake.com",
+        "subject": "applying for the university",
+        "message": "hi there!\ni want to study computer science, can you tell me about the department in your university?\nthank you very much!",
+        "isMine": true,
+        "isRead": false,
+        "createdAt": 1542040332925,
+        "id": "NXSuX"
+    },
+    {
+        "recipient": "matanbenshlomo@gmail.com",
+        "cc": null,
+        "sender": "Myself@fake.com",
+        "subject": "Guitar lessons",
+        "message": "hi there,\nim looking for a guitar teacher, and max recommended you to me.\ncan we schedule a lesson?",
+        "isMine": true,
+        "isRead": false,
+        "createdAt": 1542040453504,
+        "id": "oJvwc"
+    },
+    {
+        "recipient": "service@skideal.com",
+        "cc": null,
+        "sender": "Myself@fake.com",
+        "subject": "purchasing a vacation",
+        "message": "hello\nhow much is it for a weekend at bansko?\nalso, which hotel are you staying at there?\nthank you",
+        "isMine": true,
+        "isRead": false,
+        "createdAt": 1542040609708,
+        "id": "Ez7J3"
+    },
+    {
+        "recipient": "lab@laboffice.com",
+        "cc": null,
+        "sender": "Myself@fake.com",
+        "subject": "fixing my computer",
+        "message": "my computer has been damaged.\nwhen can i come with it?",
+        "isMine": true,
+        "isRead": false,
+        "createdAt": 1542040674951,
+        "id": "AMx7b"
+    },
+    {
+        "recipient": "ofri90@walla.com",
+        "cc": [
+            "ron@gmail.com",
+            " or@gmail.com"
+        ],
+        "sender": "Myself@fake.com",
+        "subject": "lets watch a movie?",
+        "message": "lets go watch that new marvel movie together!",
+        "isMine": true,
+        "isRead": true,
+        "createdAt": 1542040804137,
+        "id": "ACAGi"
+    },
+    {
+        "recipient": "orpaz@gmail.com",
+        "cc": null,
+        "sender": "Myself@fake.com",
+        "subject": "Code Review",
+        "message": "we have a code review!\nlets fix all of the bugs!",
+        "isMine": true,
+        "isRead": false,
+        "createdAt": 1542040869274,
+        "id": "SqSx9"
+    }
+]

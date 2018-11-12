@@ -18,20 +18,29 @@ export default {
 function query(filter = null) {
     return storageService.load(STORAGE_KEY)
         .then(emails => {
+            let jsonPrm;
             if (!emails || !emails.length) {
-                emails = [];
-                storageService.store(STORAGE_KEY, emails);
+                jsonPrm = utilService.readTextFile("../../example-data/emails.json")
+                .then(data=>{
+                    emails = JSON.parse(text);
+                    console.log('DEBUG::emails', emails);
+                    storageService.store(STORAGE_KEY, emails);
+                })
+            } else {
+                jsonPrm.resolve();
             }
+            //to make sure that the json file has been read
+            return jsonPrm.then(()=>{
+                if (filter === null) return emails;
 
-            if (filter === null) return emails;
-
-            else return emails.filter(email => {
-                return (
-                    email.subject.toUpperCase().includes(filter.byTxt.toUpperCase())
-                    && (email.isRead === !!filter.isRead || filter.isRead === 'all')
-                );
-            }).sort((email1, email2) => {
-                return (email1.createdAt > email2.createdAt) === filter.byNew;
+                else return emails.filter(email => {
+                    return (
+                        email.subject.toUpperCase().includes(filter.byTxt.toUpperCase())
+                        && (email.isRead === !!filter.isRead || filter.isRead === 'all')
+                    );
+                }).sort((email1, email2) => {
+                    return (email1.createdAt > email2.createdAt) === filter.byNew;
+                })
             })
         })
 }

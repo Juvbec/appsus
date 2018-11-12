@@ -18,7 +18,8 @@ function makeId(length=5) {
 export default {
     getRandomInt,
     makeId,
-    resetCursor
+    resetCursor,
+    readTextFile
 }
 
 function resetCursor(txtElement) { 
@@ -33,3 +34,21 @@ function resetCursor(txtElement) {
         range.select(); 
     } 
 }
+
+
+function readTextFile(file) {
+    var prm;
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            prm = Promise.resolve(rawFile.responseText);
+        } else {
+            prm = Promise.reject('something happened')
+        }
+    }
+    rawFile.send(null);
+    return prm;
+}
+
