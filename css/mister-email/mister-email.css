@@ -45,7 +45,7 @@
   position: absolute;
   height: inherit;
   background-color: #4FB346;
-  box-shadow: inset 0px 0px 100px -25px #e4ff37
+  box-shadow: inset 0px 0px 100px -25px #e4ff37;
 }
 .email-list-nav button:hover {
   background-color: rgb(56, 139, 187);
