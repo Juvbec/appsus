@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mr.Meeseeks</title>
+    <title>Zero Waste</title>
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
@@ -18,11 +18,9 @@
         <header class="app-header" @click="goHome">
             <button class="hamburger" ref="hamburger" @click.stop="openHamburgerMenu">☰</button>
             <nav @click.stop="" ref="hamburgerMenu" class="hamburger-menu">
-                <div></div>
-                <div></div>
-                <div @click.stop="goHome">Home</div>
-                <div @click.stop="goToMissKeep">Miss Keep</div>
-                <div @click.stop="goToMisterEmail">Mister Email</div>
+                <div @click.stop="goHome"><router-link @click.stop exact to="/">Home</router-link></div>
+                <div @click.stop="goToMissKeep"><router-link @click.stop to="/misskeep">Miss Keep</router-link></div>
+                <div @click.stop="goToMisterEmail"><router-link @click.stop to="/misteremail">Mister Email</router-link></div>
             </nav>
             <h1>Zero Waste</h1>
         </header>

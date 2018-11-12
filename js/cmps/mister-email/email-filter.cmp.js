@@ -1,5 +1,5 @@
 import eventBus, {CHANGE_EMAIL_FILTER, EMAIL_CHANGE} from '../../services/event-bus.service.js';
-import emailService from '../../services/mister-email/email.sevice.js';
+import emailService from '../../services/mister-email/email.service.js';
 
 export default {
     template: `

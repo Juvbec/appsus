@@ -1,5 +1,5 @@
 import eventBus, {DETAILED_VIEW, EMAIL_CHANGE, EMAIL_TO_PLACE} from '../../services/event-bus.service.js';
-import emailSevice from '../../services/mister-email/email.sevice.js';
+import emailSevice from '../../services/mister-email/email.service.js';
 
 
 export default {

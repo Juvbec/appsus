@@ -2,10 +2,10 @@
 @import './miss-keep/new-note.css';
 @import './miss-keep/note-preview.css';
 @import './miss-keep/note-color.css';
-@import './miss-keep/miss-keep.css';
 @import './miss-keep/notes-filter.css';
 @import './miss-keep/todos-list.css';
 @import './miss-keep/note-menu.css';
+@import './miss-keep/miss-keep.css';
 
 
 @import './mister-email/mister-email.css';
@@ -169,15 +169,19 @@ header.app-header:hover {
 .hamburger-menu > div {
     padding: 10px; 
 }
-.hamburger-menu div {
+.hamburger-menu > div > a {
     color: white;
     text-decoration: none;
     font-weight: bold;
 }
-.hamburger-menu div:hover {
+.hamburger-menu div:hover, .hamburger-menu > div:hover > a, .hamburger-menu .router-link-active {
     color: #4FB346;
 }
 
+.hamburger-menu:first-child {
+    margin-top: 40px;
+    background-color: #fff;
+}
 .hamburger.open + .hamburger-menu {
     transform: translate(0, 0);
     opacity: 1;

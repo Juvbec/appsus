@@ -1,4 +1,4 @@
-import emailService from '../../services/mister-email/email.sevice.js';
+import emailService from '../../services/mister-email/email.service.js';
 import utilService from '../../services/util.service.js'
 import eventBus, {EMAIL_CHANGE} from '../../services/event-bus.service.js'
 export default {
