@@ -178,10 +178,6 @@ header.app-header:hover {
     color: #4FB346;
 }
 
-.hamburger-menu:first-child {
-    margin-top: 40px;
-    background-color: #fff;
-}
 .hamburger.open + .hamburger-menu {
     transform: translate(0, 0);
     opacity: 1;

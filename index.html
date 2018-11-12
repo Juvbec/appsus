@@ -18,6 +18,8 @@
         <header class="app-header" @click="goHome">
             <button class="hamburger" ref="hamburger" @click.stop="openHamburgerMenu">☰</button>
             <nav @click.stop="" ref="hamburgerMenu" class="hamburger-menu">
+                <div></div>
+                <div></div>
                 <div @click.stop="goHome"><router-link @click.stop exact to="/">Home</router-link></div>
                 <div @click.stop="goToMissKeep"><router-link @click.stop to="/misskeep">Miss Keep</router-link></div>
                 <div @click.stop="goToMisterEmail"><router-link @click.stop to="/misteremail">Mister Email</router-link></div>
