@@ -27,8 +27,8 @@ export default {
                     bgColor.className = 'yellow';
                     break;
                 case 'blue':
-                    bgColor.titleColor = '#008b8b';
-                    bgColor.contentColor = '#48dada';
+                    bgColor.titleColor = '#2980b9';
+                    bgColor.contentColor = '#3498db';
                     bgColor.className = 'blue';
                     break;
                 case 'green':
