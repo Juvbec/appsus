@@ -1,5 +1,5 @@
 import emailPreview from '../../pages/mister-email/email-preview.cmp.js';
-import emailService from '../../services/mister-email/email.sevice.js';
+import emailService from '../../services/mister-email/email.service.js';
 import eventBus, {EMAIL_CHANGE, CHANGE_EMAIL_FILTER, UPDATE_EMAIL, EMAIL_TO_PLACE} from '../../services/event-bus.service.js';
 
 // import scrollBar from '../temp/vue-scrollbar.vue'

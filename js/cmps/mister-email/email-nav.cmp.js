@@ -1,6 +1,6 @@
 import emailFilter from '../mister-email/email-filter.cmp.js';
-import progressBar from './progress-bar.js'
-import emailService from '../../services/mister-email/email.sevice.js';
+import progressBar from './progress-bar.cmp.js'
+import emailService from '../../services/mister-email/email.service.js';
 import eventBus, { EMAIL_CHANGE } from '../../services/event-bus.service.js';
 
 export default {
@@ -25,7 +25,7 @@ export default {
                 byNew: true,
                 isRead: 'all',
             },
-            progress: 100
+            progress: 0,
         }
     },
     created() {
@@ -38,7 +38,7 @@ export default {
         },
         updateProgressBarPrecentage() {
             emailService.getProgressBarPrecentage().then(obj => {
-                this.progress = (obj.readEmails / obj.allEmails) * 100;
+                this.progress = Math.round((obj.readEmails / obj.allEmails || 0) * 100);
             })
         }
     },

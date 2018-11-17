@@ -36,19 +36,17 @@ function resetCursor(txtElement) {
 }
 
 
-function readTextFile(file) {
-    var prm;
+function readTextFile(file, callback) {
     var rawFile = new XMLHttpRequest();
     rawFile.overrideMimeType("application/json");
     rawFile.open("GET", file, true);
     rawFile.onreadystatechange = function() {
         if (rawFile.readyState === 4 && rawFile.status == "200") {
-            prm = Promise.resolve(rawFile.responseText);
+            callback(rawFile.responseText);
         } else {
-            prm = Promise.reject('something happened')
+            console.log('cant read json file');           
         }
     }
     rawFile.send(null);
-    return prm;
 }
 
